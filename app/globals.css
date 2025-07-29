@@ -1,0 +1,485 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 30 38% 95%; /* #F5EEE6 */
+    --foreground: 222.2 84% 4.9%;
+    --primary: 0 72% 37%; /* #9E1B1B */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 22 66% 50%; /* #D2642C */
+    --secondary-foreground: 0 0% 100%;
+    --tertiary: 220 41% 28%; /* #2C3E66 */
+    --accent: 266 39% 38%; /* #5D3A82 */
+    --card: 30 38% 95%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 30 38% 95%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+    --radius: 0.5rem;
+  }
+}
+
+@layer utilities {
+  /* Rajdhani Font Classes */
+  .font-rajdhani-light {
+    font-family: var(--font-rajdhani), sans-serif;
+    font-weight: 300;
+    font-style: normal;
+  }
+
+  .font-rajdhani-regular {
+    font-family: var(--font-rajdhani), sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  .font-rajdhani-medium {
+    font-family: var(--font-rajdhani), sans-serif;
+    font-weight: 500;
+    font-style: normal;
+  }
+
+  .font-rajdhani-semibold {
+    font-family: var(--font-rajdhani), sans-serif;
+    font-weight: 600;
+    font-style: normal;
+  }
+
+  .font-rajdhani-bold {
+    font-family: var(--font-rajdhani), sans-serif;
+    font-weight: 700;
+    font-style: normal;
+  }
+
+  /* Map font-playfair to font-rajdhani-bold for backward compatibility */
+  .font-playfair {
+    font-family: var(--font-rajdhani), sans-serif;
+    font-weight: 700;
+    font-style: normal;
+  }
+
+  /*
+  .gradient-red,
+  .gradient-orange,
+  .gradient-blue,
+  .gradient-purple,
+  .gradient-magenta,
+  .gradient-mixed,
+  .gradient-brand,
+  .gradient-cta,
+  .gradient-card,
+  .loading-skeleton {
+    background: none !important;
+  }
+*/
+
+  .text-gradient {
+    background: linear-gradient(135deg, #ea580c 0%, #dc2626 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-gradient-blue {
+    background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .glow-border {
+    box-shadow: 0 0 20px rgba(234, 88, 12, 0.3);
+    animation: pulse-glow 2s ease-in-out infinite alternate;
+  }
+
+  @keyframes pulse-glow {
+    from {
+      box-shadow: 0 0 20px rgba(234, 88, 12, 0.3);
+    }
+    to {
+      box-shadow: 0 0 30px rgba(234, 88, 12, 0.5);
+    }
+  }
+
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  @keyframes slideInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes slideInRight {
+    from {
+      opacity: 0;
+      transform: translateX(50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes scaleIn {
+    from {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes rotateIn {
+    from {
+      opacity: 0;
+      transform: rotate(-10deg) scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: rotate(0deg) scale(1);
+    }
+  }
+
+  @keyframes gradient-shift {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  @keyframes glow {
+    0%, 100% {
+      box-shadow: 0 0 10px rgba(158, 27, 27, 0.4);
+    }
+    50% {
+      box-shadow: 0 0 25px rgba(158, 27, 27, 0.8), 0 0 35px rgba(158, 27, 27, 0.6);
+    }
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-slide-in-left {
+    animation: slideInLeft 0.8s ease-out;
+  }
+
+  .animate-slide-in-right {
+    animation: slideInRight 0.8s ease-out;
+  }
+
+  .animate-fade-in-up {
+    animation: fadeInUp 0.8s ease-out;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.6s ease-out;
+  }
+
+  .animate-rotate-in {
+    animation: rotateIn 0.8s ease-out;
+  }
+
+  .scroll-reveal {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .scroll-reveal.revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .parallax {
+    transform: translateY(var(--scroll-y, 0));
+  }
+
+  /* Smooth scrolling improvements */
+  * {
+    scroll-behavior: smooth;
+  }
+
+  /* Performance optimizations */
+  .transform-gpu {
+    transform: translateZ(0);
+    will-change: transform;
+  }
+
+  /* Reduced motion preferences */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  /* Focus improvements */
+  .focus-visible:focus-visible {
+    outline: 2px solid #ea580c;
+    outline-offset: 2px;
+  }
+
+  /* Enhanced Card Hover Effects */
+  .card-hover {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+  }
+
+  .card-hover:hover {
+    transform: translateY(-12px) scale(1.03);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+  }
+
+  .card-hover:hover .card-icon {
+    animation: float 2s ease-in-out infinite;
+  }
+
+  .card-hover:hover .card-gradient {
+    background-size: 200% 200%;
+    animation: gradient-shift 3s ease infinite;
+  }
+
+  /* More pronounced hover effects for all cards */
+  .group:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Enhanced icon animations */
+  .group:hover .group-hover\:scale-110 {
+    transform: scale(1.15) rotate(5deg);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Enhanced text color transitions */
+  .group:hover .group-hover\:text-accent {
+    color: #5D3A82 !important;
+    transition: color 0.3s ease;
+  }
+
+  .group:hover .group-hover\:text-primary {
+    color: #9E1B1B !important;
+    transition: color 0.3s ease;
+  }
+
+  .group:hover .group-hover\:text-gray-700 {
+    color: #374151 !important;
+    transition: color 0.3s ease;
+  }
+
+  /* Glow effect for special cards */
+  .glow-border {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .glow-border::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    transition: left 0.5s;
+  }
+
+  .glow-border:hover::before {
+    left: 100%;
+  }
+
+  /* Smooth transitions for all interactive elements */
+  * {
+    transition: color 0.3s ease, background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  /* Enhanced button hover effects */
+  .btn-hover {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn-hover::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+  }
+
+  .btn-hover:hover::before {
+    width: 300px;
+    height: 300px;
+  }
+
+  /* Force hover animations to be more visible */
+  .hover\:scale-105:hover {
+    transform: scale(1.05) !important;
+  }
+
+  .hover\:shadow-2xl:hover {
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15) !important;
+  }
+
+  /* Enhanced floating animation */
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px) scale(1);
+    }
+    50% {
+      transform: translateY(-15px) scale(1.05);
+    }
+  }
+
+  /* Enhanced gradient shift */
+  @keyframes gradient-shift {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  /* Enhanced glow animation */
+  @keyframes glow {
+    0%, 100% {
+      box-shadow: 0 0 10px rgba(158, 27, 27, 0.4);
+    }
+    50% {
+      box-shadow: 0 0 25px rgba(158, 27, 27, 0.8), 0 0 35px rgba(158, 27, 27, 0.6);
+    }
+  }
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-feature-settings: "rlig" 1, "calt" 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  color: #222222;
+  font-family: 'Inter', sans-serif;
+}
+
+main {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+/* Improved loading performance */
+img {
+  content-visibility: auto;
+}
+
+/* Better text rendering */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+@font-face {
+  font-family: 'Aviano Copper Heavy';
+  src: url('/aviano-copper-heavy.otf') format('opentype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+.font-aviano-copper {
+  font-family: 'Aviano Copper Heavy', var(--font-rajdhani), sans-serif;
+  font-weight: 900;
+  letter-spacing: 0.01em;
+}
+
+.animate-fade-in {
+  animation: fadeIn 1.2s ease-in forwards;
+}
+.animate-fade-in-right {
+  animation: fadeInRight 0.6s ease-in forwards;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes fadeInRight {
+  from { opacity: 0; transform: translateX(60px); }
+  to { opacity: 1; transform: none; }
+}
+
+:root {
+  --temple-deep-navy: #0B1F3F;
+  --sacred-soft-navy: #13294B;
+  --divine-royal-gold: #D4AF37;
+  --sacred-bell-gold: #FFCC00;
+  --scroll-ivory: #FAF7F2;
+  --wisdom-sand-gold: #E0C28B;
+  --saffron-warning: #AF3B1F;
+}
