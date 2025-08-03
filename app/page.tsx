@@ -26,7 +26,7 @@ export default function HomePage() {
         <div className="absolute inset-0 bg-templeDeepNavy/80"></div>
         <div className="relative z-10 text-center max-w-5xl mx-auto px-4">
           <ScrollReveal>
-            <h1 className="font-aviano-copper text-5xl md:text-7xl font-bold mb-6 leading-tight text-scrollIvory">
+            <h1 className="font-aviano-copper text-5xl md:text-7xl font-bold mb-6 leading-tight text-sacredBellGold">
               Where Culture Meets Strength
             </h1>
           </ScrollReveal>
@@ -91,7 +91,7 @@ export default function HomePage() {
             {/* Card 1 */}
             <div className="rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 flex flex-col items-center p-6 bg-white">
               <div className="w-full aspect-[5/9] mb-4">
-                <FancyVideoPlayer src="/dand.mp4" title="Dand Exercise" poster="/dand-thumbnail.jpg" />
+                <FancyVideoPlayer src="/dand.mp4" title="Dand Exercise" poster="/dand.PNG" />
               </div>
               <div className="font-bold text-divineRoyalGold mb-2 text-center">Dand</div>
               <div className="text-templeDeepNavy text-center text-sm">A flowing full-body movement from Indian traditions that builds strength, flexibility, and coordination for enhanced body awareness.</div>
@@ -99,7 +99,7 @@ export default function HomePage() {
             {/* Card 2 */}
             <div className="rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 flex flex-col items-center p-6 bg-white">
               <div className="w-full aspect-[5/9] mb-4">
-                <FancyVideoPlayer src="/baithak.mp4" title="Baithak Exercise" poster="/baithak-thumbnail.jpg" />
+                <FancyVideoPlayer src="/baithak.mp4" title="Baithak Exercise" poster="/baithak.PNG" />
               </div>
               <div className="font-bold text-divineRoyalGold mb-2 text-center">Baithak</div>
               <div className="text-templeDeepNavy text-center text-sm">A traditional standing-repetition exercise that develops endurance, balance, and mental focus for greater control and stability.</div>
@@ -107,7 +107,7 @@ export default function HomePage() {
             {/* Card 3 */}
             <div className="rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 flex flex-col items-center p-6 bg-white">
               <div className="w-full aspect-[5/9] rounded-xl overflow-hidden mb-4 flex items-center justify-center">
-                <FancyVideoPlayer src="/sapate.mp4" title="Sapate Exercise" poster="/sapate-thumbnail.jpg" />
+                <FancyVideoPlayer src="/sapate.mp4" title="Sapate Exercise" poster="/sapate.PNG" />
               </div>
               <div className="font-bold text-divineRoyalGold mb-2 text-center">Sapate</div>
               <div className="text-templeDeepNavy text-center text-sm">Quick, rhythmic footwork drills that improve speed, timing, and agility for smooth, responsive motion in dynamic situations.</div>

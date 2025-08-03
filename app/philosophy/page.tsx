@@ -102,13 +102,13 @@ export default function PhilosophyPage() {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <ScrollReveal delay={100}>
-                <Card className="bg-sacredSoftNavy/80 backdrop-blur-sm border-divineRoyalGold/20 hover:bg-sacredSoftNavy transition-all duration-300 group min-h-[340px]">
+                <Card className="bg-white/90 backdrop-blur-sm border-divineRoyalGold/20 hover:bg-white transition-all duration-300 group min-h-[340px]">
                   <CardContent className="p-8 text-center">
                     <div className="w-20 h-20 bg-divineRoyalGold rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
                       <span className="text-templeDeepNavy text-2xl">⚖️</span>
                     </div>
-                    <h3 className="font-bold text-scrollIvory mb-4">Samatā — Balance</h3>
-                    <p className="text-scrollIvory leading-relaxed">
+                    <h3 className="font-bold text-templeDeepNavy mb-4">Samatā — Balance</h3>
+                    <p className="text-templeDeepNavy leading-relaxed">
                       Equilibrium in posture, breath, and life's extremes, fostering resilience in every situation.
                   </p>
                   </CardContent>
@@ -116,13 +116,13 @@ export default function PhilosophyPage() {
               </ScrollReveal>
 
               <ScrollReveal delay={200}>
-                <Card className="bg-sacredSoftNavy/80 backdrop-blur-sm border-divineRoyalGold/20 hover:bg-sacredSoftNavy transition-all duration-300 group min-h-[340px]">
+                <Card className="bg-white/90 backdrop-blur-sm border-divineRoyalGold/20 hover:bg-white transition-all duration-300 group min-h-[340px]">
                   <CardContent className="p-8 text-center">
                     <div className="w-20 h-20 bg-divineRoyalGold rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
                       <span className="text-templeDeepNavy text-2xl">🔗</span>
                     </div>
-                    <h3 className="font-bold text-scrollIvory mb-4">Anuśāsana — Discipline</h3>
-                    <p className="text-scrollIvory leading-relaxed">
+                    <h3 className="font-bold text-templeDeepNavy mb-4">Anuśāsana — Discipline</h3>
+                    <p className="text-templeDeepNavy leading-relaxed">
                       Steadfast commitment to regular practice, refining technique and character with each repetition.
                     </p>
                   </CardContent>
@@ -130,13 +130,13 @@ export default function PhilosophyPage() {
               </ScrollReveal>
 
               <ScrollReveal delay={300}>
-                <Card className="bg-sacredSoftNavy/80 backdrop-blur-sm border-divineRoyalGold/20 hover:bg-sacredSoftNavy transition-all duration-300 group min-h-[340px]">
+                <Card className="bg-white/90 backdrop-blur-sm border-divineRoyalGold/20 hover:bg-white transition-all duration-300 group min-h-[340px]">
                   <CardContent className="p-8 text-center">
                     <div className="w-20 h-20 bg-divineRoyalGold rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
                       <span className="text-templeDeepNavy text-2xl">🧠</span>
                     </div>
-                    <h3 className="font-bold text-scrollIvory mb-4">Jñāna — Awareness</h3>
-                    <p className="text-scrollIvory leading-relaxed">
+                    <h3 className="font-bold text-templeDeepNavy mb-4">Jñāna — Awareness</h3>
+                    <p className="text-templeDeepNavy leading-relaxed">
                       Not just knowledge, but embodied understanding—the clarity that comes from listening to your body, observing your breath, and responding with wisdom cultivated through practice.
                     </p>
                   </CardContent>
@@ -171,7 +171,7 @@ export default function PhilosophyPage() {
                     </p>
                     
                     <p>
-                      The practices you'll find in Talim Deck—Dand, Baithak, Sapate—were refined in these spaces over centuries. Each movement carries the wisdom of countless masters who understood that true strength begins with inner awareness.
+                      The practices you'll find in the Talim Deck—Dand, Baithak, Sapate—were refined in these spaces over centuries. Each movement carries the wisdom of countless masters who understood that true strength begins with inner awareness.
                     </p>
                           </div>
                       </div>
@@ -196,13 +196,13 @@ export default function PhilosophyPage() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               <ScrollReveal delay={100}>
-                <Card className="bg-sacredSoftNavy/80 backdrop-blur-sm border-divineRoyalGold/20 hover:bg-sacredSoftNavy transition-all duration-300 min-h-[320px] group hover:scale-105 hover:shadow-2xl hover:shadow-divineRoyalGold/20">
+                <Card className="bg-white/90 backdrop-blur-sm border-divineRoyalGold/20 hover:bg-white transition-all duration-300 min-h-[320px] group hover:scale-105 hover:shadow-2xl hover:shadow-divineRoyalGold/20">
                   <CardContent className="p-6 text-center">
                     <div className="w-16 h-16 bg-divineRoyalGold rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
                       <span className="text-templeDeepNavy text-xl">⏳</span>
                     </div>
-                    <h3 className="font-bold text-scrollIvory mb-3">Brahma Muhurta</h3>
-                    <p className="text-scrollIvory text-sm leading-relaxed">
+                    <h3 className="font-bold text-templeDeepNavy mb-3">Brahma Muhurta</h3>
+                    <p className="text-templeDeepNavy text-sm leading-relaxed">
                       The period roughly 90 minutes before sunrise, considered ideal for learning, meditation, and reflection due to its stillness and clarity.
                     </p>
                   </CardContent>
@@ -210,13 +210,13 @@ export default function PhilosophyPage() {
               </ScrollReveal>
 
               <ScrollReveal delay={200}>
-                <Card className="bg-sacredSoftNavy/80 backdrop-blur-sm border-divineRoyalGold/20 hover:bg-sacredSoftNavy transition-all duration-300 min-h-[320px] group hover:scale-105 hover:shadow-2xl hover:shadow-divineRoyalGold/20">
+                <Card className="bg-white/90 backdrop-blur-sm border-divineRoyalGold/20 hover:bg-white transition-all duration-300 min-h-[320px] group hover:scale-105 hover:shadow-2xl hover:shadow-divineRoyalGold/20">
                   <CardContent className="p-6 text-center">
                     <div className="w-16 h-16 bg-divineRoyalGold rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
                       <span className="text-templeDeepNavy text-xl">☀️</span>
                           </div>
-                    <h3 className="font-bold text-scrollIvory mb-3">Surya Namaskar</h3>
-                    <p className="text-scrollIvory text-sm leading-relaxed">
+                    <h3 className="font-bold text-templeDeepNavy mb-3">Surya Namaskar</h3>
+                    <p className="text-templeDeepNavy text-sm leading-relaxed">
                       A flowing sequence of poses traditionally practised at sunrise to energise the body and greet the day.
                     </p>
                   </CardContent>
@@ -224,13 +224,13 @@ export default function PhilosophyPage() {
               </ScrollReveal>
 
               <ScrollReveal delay={300}>
-                <Card className="bg-sacredSoftNavy/80 backdrop-blur-sm border-divineRoyalGold/20 hover:bg-sacredSoftNavy transition-all duration-300 min-h-[320px] group hover:scale-105 hover:shadow-2xl hover:shadow-divineRoyalGold/20">
+                <Card className="bg-white/90 backdrop-blur-sm border-divineRoyalGold/20 hover:bg-white transition-all duration-300 min-h-[320px] group hover:scale-105 hover:shadow-2xl hover:shadow-divineRoyalGold/20">
                   <CardContent className="p-6 text-center">
                     <div className="w-16 h-16 bg-divineRoyalGold rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
                       <span className="text-templeDeepNavy text-xl">🤼</span>
                           </div>
-                    <h3 className="font-bold text-scrollIvory mb-3">Vyayam</h3>
-                    <p className="text-scrollIvory text-sm leading-relaxed">
+                    <h3 className="font-bold text-templeDeepNavy mb-3">Vyayam</h3>
+                    <p className="text-templeDeepNavy text-sm leading-relaxed">
                       Physical training encompassing traditional bodyweight movements aimed at enhancing strength, endurance, and agility.
                     </p>
                   </CardContent>
@@ -238,13 +238,13 @@ export default function PhilosophyPage() {
               </ScrollReveal>
 
               <ScrollReveal delay={400}>
-                <Card className="bg-sacredSoftNavy/80 backdrop-blur-sm border-divineRoyalGold/20 hover:bg-sacredSoftNavy transition-all duration-300 min-h-[320px] group hover:scale-105 hover:shadow-2xl hover:shadow-divineRoyalGold/20">
+                <Card className="bg-white/90 backdrop-blur-sm border-divineRoyalGold/20 hover:bg-white transition-all duration-300 min-h-[320px] group hover:scale-105 hover:shadow-2xl hover:shadow-divineRoyalGold/20">
                   <CardContent className="p-6 text-center">
                     <div className="w-16 h-16 bg-divineRoyalGold rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
                       <span className="text-templeDeepNavy text-xl">🧘‍♂️</span>
                     </div>
-                    <h3 className="font-bold text-scrollIvory mb-3">Dhyāna</h3>
-                    <p className="text-scrollIvory text-sm leading-relaxed">
+                    <h3 className="font-bold text-templeDeepNavy mb-3">Dhyāna</h3>
+                    <p className="text-templeDeepNavy text-sm leading-relaxed">
                       A disciplined practice of focused awareness and mental stillness, used to centre the mind and cultivate insight.
                     </p>
                   </CardContent>
@@ -270,13 +270,13 @@ export default function PhilosophyPage() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <ScrollReveal delay={100}>
-                <Card className="bg-sacredSoftNavy/80 backdrop-blur-sm border-divineRoyalGold/20 transform hover:scale-105 transition-all duration-500 animate-slide-in-left hover:shadow-2xl hover:shadow-divineRoyalGold/20 group min-h-[340px]">
+                <Card className="bg-white/90 backdrop-blur-sm border-divineRoyalGold/20 transform hover:scale-105 transition-all duration-500 animate-slide-in-left hover:shadow-2xl hover:shadow-divineRoyalGold/20 group min-h-[340px]">
                   <CardContent className="p-8">
-                    <h3 className="font-bold text-scrollIvory mb-4 group-hover:text-divineRoyalGold transition-colors duration-300">The Challenge</h3>
-                    <p className="text-scrollIvory leading-relaxed mb-4 group-hover:text-divineRoyalGold transition-colors duration-300">
+                    <h3 className="font-bold text-templeDeepNavy mb-4 group-hover:text-divineRoyalGold transition-colors duration-300">The Challenge</h3>
+                    <p className="text-templeDeepNavy leading-relaxed mb-4 group-hover:text-divineRoyalGold transition-colors duration-300">
                       In a world flooded with conveniences, we've grown increasingly disconnected from our bodies. Long hours at desks, constant screen exposure, and hyper-efficiency have created a lifestyle that undermines movement and mental clarity.
                     </p>
-                    <p className="text-scrollIvory leading-relaxed group-hover:text-divineRoyalGold transition-colors duration-300">
+                    <p className="text-templeDeepNavy leading-relaxed group-hover:text-divineRoyalGold transition-colors duration-300">
                       This disconnection has ripple effects—weakened posture, chronic stress, and a growing sense of physical and emotional fatigue. Despite gyms and apps, many struggle to find sustainable, meaningful fitness that speaks to their deeper needs.
                     </p>
                   </CardContent>
@@ -284,13 +284,13 @@ export default function PhilosophyPage() {
               </ScrollReveal>
 
               <ScrollReveal delay={200}>
-                <Card className="bg-sacredSoftNavy/80 backdrop-blur-sm border-divineRoyalGold/20 transform hover:scale-105 transition-all duration-500 animate-slide-in-right hover:shadow-2xl hover:shadow-divineRoyalGold/20 group min-h-[340px]">
+                <Card className="bg-white/90 backdrop-blur-sm border-divineRoyalGold/20 transform hover:scale-105 transition-all duration-500 animate-slide-in-right hover:shadow-2xl hover:shadow-divineRoyalGold/20 group min-h-[340px]">
                   <CardContent className="p-8">
-                    <h3 className="font-bold text-scrollIvory mb-4 group-hover:text-divineRoyalGold transition-colors duration-300">The Solution</h3>
-                    <p className="text-scrollIvory leading-relaxed mb-4 group-hover:text-divineRoyalGold transition-colors duration-300">
+                    <h3 className="font-bold text-templeDeepNavy mb-4 group-hover:text-divineRoyalGold transition-colors duration-300">The Solution</h3>
+                    <p className="text-templeDeepNavy leading-relaxed mb-4 group-hover:text-divineRoyalGold transition-colors duration-300">
                       Ancient methods remind us that movement can be intentional, invigorating, and deeply restorative. When stripped to its essence, fitness becomes less about aesthetics and more about awareness, control, and connection.
                     </p>
-                    <p className="text-scrollIvory leading-relaxed group-hover:text-divineRoyalGold transition-colors duration-300">
+                    <p className="text-templeDeepNavy leading-relaxed group-hover:text-divineRoyalGold transition-colors duration-300">
                       Incorporating just a few minutes of purposeful movement into your day can restore this balance. These timeless principles don't require fancy gear or perfect conditions—just the willingness to move, breathe, and reconnect with what has always been within you.
                     </p>
                   </CardContent>

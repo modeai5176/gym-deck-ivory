@@ -17,10 +17,14 @@ const FlipCard: React.FC<FlipCardProps> = ({ front, back, className }) => {
   // Detect touch device on mount
   useEffect(() => {
     setMounted(true);
-    setIsTouch(
-      typeof window !== "undefined" &&
-        ("ontouchstart" in window || navigator.maxTouchPoints > 0)
-    );
+    // Use a more SSR-safe approach
+    const checkTouch = () => {
+      if (typeof window !== "undefined") {
+        return "ontouchstart" in window || navigator.maxTouchPoints > 0;
+      }
+      return false;
+    };
+    setIsTouch(checkTouch());
   }, []);
 
   // Keyboard accessibility: flip on Enter/Space
@@ -48,8 +52,24 @@ const FlipCard: React.FC<FlipCardProps> = ({ front, back, className }) => {
     if (!isTouch) setFlipped(false);
   };
 
-  // SSR-safe: don't render until mounted
-  if (!mounted) return <div style={{ minHeight: 240 }} />;
+  // SSR-safe: render a placeholder until mounted
+  if (!mounted) {
+    return (
+      <div 
+        className={className || ""} 
+        style={{ 
+          minHeight: 240,
+          width: "100%",
+          height: "100%",
+          display: "block"
+        }}
+      >
+        <div style={{ width: "100%", height: "100%" }}>
+          {front}
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div
