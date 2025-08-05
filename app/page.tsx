@@ -19,11 +19,6 @@ export default function HomePage() {
     <div className="pt-0 bg-templeDeepNavy">
       {/* Hero Section */}
       <section className="min-h-screen flex items-center justify-center text-scrollIvory relative overflow-hidden mt-0 bg-templeDeepNavy">
-        {/* Hero Background Image */}
-        <div className="absolute inset-0 z-0">
-          <img src="/hero.webp" alt="Hero Background" className="w-full h-full object-cover opacity-60" />
-        </div>
-        <div className="absolute inset-0 bg-templeDeepNavy/80"></div>
         <div className="relative z-10 text-center max-w-5xl mx-auto px-4">
           <ScrollReveal>
             <h1 className="font-aviano-copper text-5xl md:text-7xl font-bold mb-6 leading-tight text-sacredBellGold">

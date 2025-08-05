@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useState, useRef } from 'react'
-import { Play, Pause, Volume2, VolumeX } from 'lucide-react'
+import { Play, Pause } from 'lucide-react'
 
 interface FancyVideoPlayerProps {
   src: string
@@ -11,7 +11,6 @@ interface FancyVideoPlayerProps {
 
 export default function FancyVideoPlayer({ src, title, poster }: FancyVideoPlayerProps) {
   const [isPlaying, setIsPlaying] = useState(false)
-  const [isMuted, setIsMuted] = useState(false)
   const [showControls, setShowControls] = useState(true)
   const videoRef = useRef<HTMLVideoElement>(null)
 
@@ -36,13 +35,6 @@ export default function FancyVideoPlayer({ src, title, poster }: FancyVideoPlaye
         videoRef.current.play()
       }
       setIsPlaying(!isPlaying)
-    }
-  }
-
-  const toggleMute = () => {
-    if (videoRef.current) {
-      videoRef.current.muted = !isMuted
-      setIsMuted(!isMuted)
     }
   }
 
@@ -71,6 +63,7 @@ export default function FancyVideoPlayer({ src, title, poster }: FancyVideoPlaye
         playsInline
         preload="metadata"
         poster={poster}
+        muted
         onEnded={() => setIsPlaying(false)}
       >
         <source src={src} type="video/mp4" />
@@ -96,22 +89,7 @@ export default function FancyVideoPlayer({ src, title, poster }: FancyVideoPlaye
           </button>
         </div>
 
-        {/* Bottom Controls */}
-        <div className="absolute bottom-4 right-4">
-          <button
-            onClick={(e) => {
-              e.stopPropagation()
-              toggleMute()
-            }}
-            className="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center transition-colors duration-200"
-          >
-            {isMuted ? (
-              <VolumeX className="text-white" size={18} />
-            ) : (
-              <Volume2 className="text-white" size={18} />
-            )}
-          </button>
-        </div>
+
 
         {/* Loading/Play Indicator */}
         <div className="absolute top-4 right-4">

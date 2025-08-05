@@ -24,11 +24,11 @@ export default function Footer() {
               Where ancient wisdom meets modern practice. Transform your body and spirit through sacred movement.
             </p>
             <div className="flex space-x-4">
-              <Link href="#" className="text-black hover:text-gray-700 transition-colors">
+              <Link href="https://www.instagram.com/theconsciouskilo?igsh=MTNqNDgwMHpvN2puMQ%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer" className="text-black hover:text-gray-700 transition-colors">
                 <Instagram size={24} />
               </Link>
               <Link
-                href="mailto:hello@theconsciouskilo.com"
+                href="mailto:shop@consciouskilo.com"
                 className="text-black hover:text-gray-700 transition-colors"
               >
                 <Mail size={24} />
