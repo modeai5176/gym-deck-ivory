@@ -8,6 +8,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import Link from "next/link"
 import Image from "next/image"
+import PaymentNotification from "../components/payment-notification"
 
 export default function CheckoutPage() {
   const [formData, setFormData] = useState({
@@ -22,6 +23,15 @@ export default function CheckoutPage() {
   })
   const [isProcessing, setIsProcessing] = useState(false)
   const [isRazorpayLoaded, setIsRazorpayLoaded] = useState(false)
+  const [notification, setNotification] = useState<{
+    type: 'success' | 'error' | 'warning'
+    message: string
+    isVisible: boolean
+  }>({
+    type: 'success',
+    message: '',
+    isVisible: false
+  })
 
   // Load Razorpay script
   useEffect(() => {
@@ -91,14 +101,28 @@ export default function CheckoutPage() {
             })
 
             if (verifyResponse.ok) {
-              alert('Payment successful! You will receive a confirmation email shortly.')
+              setNotification({
+                type: 'success',
+                message: 'Payment successful! You will receive a confirmation email shortly.',
+                isVisible: true
+              })
               // Here you can redirect to success page or clear form
             } else {
-              alert('Payment verification failed. Please contact support.')
+              setNotification({
+                type: 'error',
+                message: 'Payment verification failed. Please contact support.',
+                isVisible: true
+              })
             }
           } catch (error) {
-            console.error('Payment verification error:', error)
-            alert('Payment verification failed. Please contact support.')
+            if (process.env.NODE_ENV === 'development') {
+              console.error('Payment verification error:', error)
+            }
+            setNotification({
+              type: 'error',
+              message: 'Payment verification failed. Please contact support.',
+              isVisible: true
+            })
           }
         },
         prefill: {
@@ -117,8 +141,14 @@ export default function CheckoutPage() {
       const razorpay = new (window as any).Razorpay(options)
       razorpay.open()
     } catch (error) {
-      console.error('Payment error:', error)
-      alert('Failed to initiate payment. Please try again.')
+      if (process.env.NODE_ENV === 'development') {
+        console.error('Payment error:', error)
+      }
+      setNotification({
+        type: 'error',
+        message: 'Failed to initiate payment. Please try again.',
+        isVisible: true
+      })
     } finally {
       setIsProcessing(false)
     }
@@ -139,6 +169,12 @@ export default function CheckoutPage() {
 
   return (
     <div className="min-h-screen flex items-center justify-center pt-32 pb-16 bg-templeDeepNavy">
+      <PaymentNotification
+        type={notification.type}
+        message={notification.message}
+        isVisible={notification.isVisible}
+        onClose={() => setNotification(prev => ({ ...prev, isVisible: false }))}
+      />
       <div className="max-w-6xl w-full mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Order Summary */}
         <div className="flex flex-col items-center">
