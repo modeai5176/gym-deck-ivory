@@ -28,7 +28,13 @@ function checkRateLimit(ip: string): boolean {
   return true
 }
 
-function validateOrderRequest(body: any): { valid: boolean; error?: string } {
+interface OrderRequest {
+  amount: number
+  currency: string
+  receipt: string
+}
+
+function validateOrderRequest(body: OrderRequest): { valid: boolean; error?: string } {
   if (!body.amount || typeof body.amount !== 'number') {
     return { valid: false, error: 'Invalid amount' }
   }

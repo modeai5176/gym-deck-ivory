@@ -14,6 +14,8 @@ import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext
 
 export default function HomePage() {
   const [showAllBenefits, setShowAllBenefits] = useState(false)
+  const [current, setCurrent] = useState(0)
+  const emblaApi = useRef<UseEmblaCarouselType[1] | null>(null)
 
   return (
     <div className="pt-0 bg-templeDeepNavy">
@@ -351,8 +353,6 @@ export default function HomePage() {
                 icon: <Dumbbell className="text-blue-600" size={18} />, bg: "bg-blue-100", name: "Raj Patel", title: "Fitness Coach, Delhi"
               }
             ];
-            const [current, setCurrent] = useState(0);
-            const emblaApi = useRef<UseEmblaCarouselType[1] | null>(null);
             return (
               <div className="relative">
                 <Carousel

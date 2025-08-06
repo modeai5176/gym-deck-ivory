@@ -6,7 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import Link from "next/link"
+
 import Image from "next/image"
 import PaymentNotification from "../components/payment-notification"
 
@@ -85,7 +85,7 @@ export default function CheckoutPage() {
         name: 'Conscious Kilo',
         description: 'Talim Deck - Premium Edition',
         order_id: orderData.orderId,
-        handler: async function (response: any) {
+        handler: async function (response: { razorpay_order_id: string; razorpay_payment_id: string; razorpay_signature: string }) {
           try {
             // Verify payment on server
             const verifyResponse = await fetch('/api/verify-payment', {
@@ -138,7 +138,7 @@ export default function CheckoutPage() {
         },
       }
 
-      const razorpay = new (window as any).Razorpay(options)
+      const razorpay = new (window as { Razorpay: new (options: any) => any }).Razorpay(options)
       razorpay.open()
     } catch (error) {
       if (process.env.NODE_ENV === 'development') {

@@ -23,7 +23,13 @@ function checkRateLimit(ip: string): boolean {
   return true
 }
 
-function validatePaymentRequest(body: any): { valid: boolean; error?: string } {
+interface PaymentRequest {
+  razorpay_order_id: string
+  razorpay_payment_id: string
+  razorpay_signature: string
+}
+
+function validatePaymentRequest(body: PaymentRequest): { valid: boolean; error?: string } {
   if (!body.razorpay_order_id || typeof body.razorpay_order_id !== 'string') {
     return { valid: false, error: 'Invalid order ID' }
   }
