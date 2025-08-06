@@ -102,7 +102,7 @@ export default function Navigation() {
               </Link>
             ))}
             <div className="pt-3 border-t border-gray-200">
-              <Link href="/checkout" className="block">
+              <Link href="/checkout" className="block" onClick={() => setIsOpen(false)}>
                 <Button className="w-full bg-sacredBellGold text-templeDeepNavy font-bold hover:bg-divineRoyalGold hover:text-scrollIvory transition-all duration-300">
                   <ShoppingBag className="mr-2" size={16} />
                   Get Deck

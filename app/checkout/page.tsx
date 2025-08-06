@@ -1,7 +1,7 @@
 "use client"
 
-import { useState } from "react"
-import { Shield, Truck, CreditCard } from "lucide-react"
+import { useState, useEffect } from "react"
+import { Shield, Truck, CreditCard, Loader2 } from "lucide-react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -21,6 +21,20 @@ export default function CheckoutPage() {
     phone: "",
   })
   const [isProcessing, setIsProcessing] = useState(false)
+  const [isRazorpayLoaded, setIsRazorpayLoaded] = useState(false)
+
+  // Load Razorpay script
+  useEffect(() => {
+    const script = document.createElement('script')
+    script.src = 'https://checkout.razorpay.com/v1/checkout.js'
+    script.async = true
+    script.onload = () => setIsRazorpayLoaded(true)
+    document.body.appendChild(script)
+
+    return () => {
+      document.body.removeChild(script)
+    }
+  }, [])
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({
@@ -29,13 +43,85 @@ export default function CheckoutPage() {
     })
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsProcessing(true)
-    setTimeout(() => {
+
+    try {
+      // Create order on server
+      const orderResponse = await fetch('/api/create-order', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          amount: 1, // Testing with 1 rupee
+          currency: 'INR',
+          receipt: `talim_deck_test_${Date.now()}`,
+        }),
+      })
+
+      if (!orderResponse.ok) {
+        throw new Error('Failed to create order')
+      }
+
+      const orderData = await orderResponse.json()
+
+      // Initialize Razorpay payment
+      const options = {
+        key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
+        amount: orderData.amount,
+        currency: orderData.currency,
+        name: 'Conscious Kilo',
+        description: 'Talim Deck - Premium Edition',
+        order_id: orderData.orderId,
+        handler: async function (response: any) {
+          try {
+            // Verify payment on server
+            const verifyResponse = await fetch('/api/verify-payment', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                razorpay_order_id: response.razorpay_order_id,
+                razorpay_payment_id: response.razorpay_payment_id,
+                razorpay_signature: response.razorpay_signature,
+              }),
+            })
+
+            if (verifyResponse.ok) {
+              alert('Payment successful! You will receive a confirmation email shortly.')
+              // Here you can redirect to success page or clear form
+            } else {
+              alert('Payment verification failed. Please contact support.')
+            }
+          } catch (error) {
+            console.error('Payment verification error:', error)
+            alert('Payment verification failed. Please contact support.')
+          }
+        },
+        prefill: {
+          name: `${formData.firstName} ${formData.lastName}`,
+          email: formData.email,
+          contact: formData.phone,
+        },
+        notes: {
+          address: `${formData.address}, ${formData.city}, ${formData.state} - ${formData.pin}`,
+        },
+        theme: {
+          color: '#0B1F3F',
+        },
+      }
+
+      const razorpay = new (window as any).Razorpay(options)
+      razorpay.open()
+    } catch (error) {
+      console.error('Payment error:', error)
+      alert('Failed to initiate payment. Please try again.')
+    } finally {
       setIsProcessing(false)
-      alert("Order placed successfully! You will receive a confirmation email shortly.")
-    }, 2000)
+    }
   }
 
   const isFormComplete = Object.values({
@@ -48,6 +134,8 @@ export default function CheckoutPage() {
     pin: formData.pin,
     phone: formData.phone,
   }).every((val) => val.trim() !== "")
+
+  const canProceed = isFormComplete && isRazorpayLoaded && !isProcessing
 
   return (
     <div className="min-h-screen flex items-center justify-center pt-32 pb-16 bg-templeDeepNavy">
@@ -76,14 +164,14 @@ export default function CheckoutPage() {
                   <span className="inline-block text-xs text-templeDeepNavy/80 rounded px-2 py-1 mt-1">Premium Edition</span>
                   </div>
                 <div className="text-right">
-                  <p className="text-lg font-bold text-templeDeepNavy">₹2,999</p>
+                  <p className="text-lg font-bold text-templeDeepNavy">₹1</p>
                 </div>
               </div>
                 {/* Pricing Breakdown */}
               <div className="space-y-1 border-t border-templeDeepNavy/20 pt-3">
                 <div className="flex justify-between text-templeDeepNavy/80">
                     <span>Subtotal</span>
-                  <span>₹2,999</span>
+                  <span>₹1</span>
                   </div>
                 <div className="flex justify-between text-templeDeepNavy/80">
                     <span>Shipping</span>
@@ -95,7 +183,7 @@ export default function CheckoutPage() {
                   </div>
                 <div className="flex justify-between text-templeDeepNavy font-bold border-t border-templeDeepNavy/20 pt-2">
                     <span>Total</span>
-                  <span>₹2,999</span>
+                  <span>₹1</span>
                 </div>
                   </div>
               {/* Features */}
@@ -119,12 +207,21 @@ export default function CheckoutPage() {
             <Button
               type="submit"
               size="lg"
-              className={`font-bold px-16 py-6 rounded-2xl shadow-md transition-all duration-300 text-2xl w-full max-w-xs ${isFormComplete && !isProcessing ? 'bg-templeDeepNavy text-white hover:bg-templeDeepNavy/90 hover:text-white' : 'bg-gray-300 text-gray-500 cursor-not-allowed'}`}
+              className={`font-bold px-16 py-6 rounded-2xl shadow-md transition-all duration-300 text-2xl w-full max-w-xs ${canProceed ? 'bg-templeDeepNavy text-white hover:bg-templeDeepNavy/90 hover:text-white' : 'bg-gray-300 text-gray-500 cursor-not-allowed'}`}
               style={{ minWidth: 220 }}
-              disabled={!isFormComplete || isProcessing}
+              disabled={!canProceed}
               onClick={handleSubmit}
             >
-              {isProcessing ? "Processing..." : "Order Deck"}
+              {isProcessing ? (
+                <>
+                  <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+                  Processing...
+                </>
+              ) : !isRazorpayLoaded ? (
+                "Loading Payment..."
+              ) : (
+                "Order Deck"
+              )}
             </Button>
           </div>
           </div>
