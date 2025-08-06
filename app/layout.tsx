@@ -20,7 +20,7 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: "CONSCIOUS KILO - Indian Bodyweight Workout Cards | Ancient Fitness Wisdom",
+    default: "CONSCIOUS KILO - Indian Bodyweight Exercise Cards | Ancient Fitness Wisdom",
     template: "%s | CONSCIOUS KILO",
   },
   description:
@@ -54,7 +54,7 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://consciouskilo.com",
     siteName: "CONSCIOUS KILO",
-    title: "CONSCIOUS KILO - Indian Bodyweight Workout Cards",
+    title: "CONSCIOUS KILO - Indian Bodyweight Exercise Cards",
     description:
       "Transform your fitness journey with 80 beautifully crafted cards blending ancient Indian bodyweight traditions with modern training.",
     images: [
@@ -62,13 +62,13 @@ export const metadata: Metadata = {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "CONSCIOUS KILO - Indian Bodyweight Workout Cards",
+        alt: "CONSCIOUS KILO - Indian Bodyweight Exercise Cards",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "CONSCIOUS KILO - Indian Bodyweight Workout Cards",
+    title: "CONSCIOUS KILO - Indian Bodyweight Exercise Cards",
     description:
       "Transform your fitness journey with ancient Indian bodyweight traditions. 80 cards combining movement, breath, and conscious intention.",
     images: ["/twitter-image.jpg"],

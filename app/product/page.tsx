@@ -9,7 +9,7 @@ import ScrollReveal from "../components/scroll-reveal"
 import FlipCard from "@/components/ui/flip-card"
 
 export const metadata: Metadata = {
-  title: "Talim Deck - 80 Indian Bodyweight Workout Cards",
+      title: "Talim Deck - 80 Indian Bodyweight Exercise Cards",
   description:
     "Premium 80-card deck featuring authentic Indian bodyweight traditions. Includes Dand, Baithak, and Sapate exercises with progress trackers and customizable templates.",
   keywords: [
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     "Indian physical culture",
   ],
   openGraph: {
-    title: "Talim Deck - 80 Indian Bodyweight Workout Cards",
+    title: "Talim Deck - 80 Indian Bodyweight Exercise Cards",
     description:
       "Premium deck with authentic Indian bodyweight traditions and movements. Transform your fitness journey with ancient wisdom.",
     images: ["/product-og-image.jpg"],
@@ -34,7 +34,7 @@ export default function ProductPage() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Product",
-    name: "Talim Deck - Indian Bodyweight Workout Cards",
+          name: "Talim Deck - Indian Bodyweight Exercise Cards",
     description: "80 beautifully crafted cards blending ancient Indian bodyweight traditions with modern training principles",
     brand: {
       "@type": "Brand",
