@@ -86,7 +86,7 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    google: "your-google-verification-code",
+    google: "googlef085e6a019b189a5",
     yandex: "your-yandex-verification-code",
   },
     generator: 'v0.dev'
