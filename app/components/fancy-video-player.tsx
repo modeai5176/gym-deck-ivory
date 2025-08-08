@@ -70,7 +70,7 @@ export default function FancyVideoPlayer({ src, title, poster }: FancyVideoPlaye
       </video>
 
       {/* Custom Overlay Controls */}
-      <div className={`absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20 ${!isPlaying ? 'opacity-100' : 'opacity-0'} transition-opacity duration-300`}>
+      <div className={`absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-black/10 ${!isPlaying ? 'opacity-100' : 'opacity-0'} transition-opacity duration-300`}>
         
         {/* Play/Pause Button - Center */}
         <div className="absolute inset-0 flex items-center justify-center">

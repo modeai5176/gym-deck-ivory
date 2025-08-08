@@ -100,54 +100,54 @@ export default function EmailCapturePopup() {
       <div className="fixed inset-0 bg-black/50 z-50" onClick={handleClose} />
       
       {/* Popup */}
-      <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 w-full max-w-md mx-4">
-                  <div className="bg-white rounded-2xl shadow-2xl overflow-hidden">
+      <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+        <div className="w-full max-w-md bg-white rounded-2xl shadow-2xl overflow-hidden max-h-[90vh] overflow-y-auto">
             {/* Header */}
-            <div className="bg-templeDeepNavy p-6 text-center relative">
+            <div className="bg-templeDeepNavy p-3 md:p-6 text-center relative">
               <button
                 onClick={handleClose}
-                className="absolute top-4 right-4 text-white hover:text-gray-200 transition-colors"
+                className="absolute top-2 right-2 md:top-4 md:right-4 text-white hover:text-gray-200 transition-colors p-2"
               >
-                <X size={20} />
+                <X size={18} className="md:w-5 md:h-5" />
               </button>
               
-              <div className="flex justify-center mb-4">
-                <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center">
-                  <Gift className="text-white" size={32} />
+              <div className="flex justify-center mb-3 md:mb-4">
+                <div className="w-12 h-12 md:w-16 md:h-16 bg-white/20 rounded-full flex items-center justify-center">
+                  <Gift className="text-white" size={24} className="md:w-8 md:h-8" />
                 </div>
               </div>
               
-              <h3 className="text-2xl font-bold text-white mb-2">
+              <h3 className="text-xl md:text-2xl font-bold text-white mb-2">
                 Exclusive 15% OFF!
               </h3>
-              <p className="text-white/90 text-sm">
+              <p className="text-white/90 text-xs md:text-sm">
                 Unlock ancient Indian fitness wisdom
               </p>
             </div>
 
           {/* Content */}
-          <div className="p-6">
+          <div className="p-3 md:p-6">
             {!isSubmitted ? (
               <>
-                <div className="text-center mb-6">
-                  <div className="flex items-center justify-center gap-2 mb-3">
-                    <Sparkles className="text-sacredBellGold" size={20} />
-                    <span className="text-lg font-semibold text-templeDeepNavy">
+                <div className="text-center mb-4 md:mb-6">
+                  <div className="flex items-center justify-center gap-1 md:gap-2 mb-2 md:mb-3 flex-wrap">
+                    <Sparkles className="text-sacredBellGold" size={16} className="md:w-5 md:h-5" />
+                    <span className="text-base md:text-lg font-semibold text-templeDeepNavy">
                       Get Your Discount Code
                     </span>
-                    <Sparkles className="text-sacredBellGold" size={20} />
+                    <Sparkles className="text-sacredBellGold" size={16} className="md:w-5 md:h-5" />
                   </div>
-                  <p className="text-gray-600 text-sm leading-relaxed">
+                  <p className="text-gray-600 text-xs md:text-sm leading-relaxed px-1 md:px-0">
                     Subscribe to receive your exclusive 15% discount code for the Talim Deck. 
                     Plus, get early access to new exercises and ancient fitness wisdom.
                   </p>
                 </div>
 
-                <form onSubmit={handleSubmit} className="space-y-4">
+                <form onSubmit={handleSubmit} className="space-y-3 md:space-y-4">
                   <div>
-                    <div className="flex items-center gap-2 mb-2">
-                      <Mail className="text-sacredBellGold" size={16} />
-                      <label htmlFor="email" className="text-sm font-medium text-templeDeepNavy">
+                    <div className="flex items-center gap-1 md:gap-2 mb-1 md:mb-2">
+                      <Mail className="text-sacredBellGold" size={14} className="md:w-4 md:h-4" />
+                      <label htmlFor="email" className="text-xs md:text-sm font-medium text-templeDeepNavy">
                         Email Address
                       </label>
                     </div>
@@ -157,7 +157,7 @@ export default function EmailCapturePopup() {
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       placeholder="your@email.com"
-                      className="border-templeDeepNavy/20 focus:border-sacredBellGold"
+                      className="border-templeDeepNavy/20 focus:border-sacredBellGold text-sm md:text-base py-2 md:py-3"
                       required
                     />
                   </div>
@@ -165,7 +165,7 @@ export default function EmailCapturePopup() {
                   <Button
                     type="submit"
                     disabled={isSubmitting || !email}
-                    className="w-full bg-sacredBellGold text-templeDeepNavy hover:bg-divineRoyalGold hover:text-scrollIvory font-semibold py-3"
+                    className="w-full bg-sacredBellGold text-templeDeepNavy hover:bg-divineRoyalGold hover:text-scrollIvory font-semibold py-2 md:py-3 text-sm md:text-base"
                   >
                     {isSubmitting ? (
                       <>
@@ -181,7 +181,7 @@ export default function EmailCapturePopup() {
                   </Button>
                 </form>
 
-                <p className="text-xs text-gray-500 text-center mt-4">
+                <p className="text-xs text-gray-500 text-center mt-3 md:mt-4">
                   No spam, ever. Unsubscribe anytime.
                 </p>
               </>
