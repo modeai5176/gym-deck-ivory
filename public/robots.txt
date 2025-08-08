@@ -1,0 +1,24 @@
+# robots.txt for consciouskilo.com
+# Last updated: 2025-08-07
+
+User-agent: *
+# Allow search engines to index all public pages
+Allow: /
+
+# Disallow access to non-public or utility pages
+Disallow: /cart/
+Disallow: /checkout/
+Disallow: /account/
+Disallow: /login/
+Disallow: /signup/
+Disallow: /orders/
+Disallow: /search/
+Disallow: /wishlist/
+Disallow: /private/
+Disallow: /tmp/
+
+# Block crawling of query parameter URLs (optional, for SEO cleanliness)
+Disallow: /*?*
+
+# Sitemap location
+Sitemap: https://consciouskilo.com/sitemap.xml 

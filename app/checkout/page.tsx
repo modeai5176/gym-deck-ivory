@@ -239,27 +239,6 @@ export default function CheckoutPage() {
                 </div>
               </CardContent>
             </Card>
-          <div className="flex justify-center w-full mt-6">
-            <Button
-              type="submit"
-              size="lg"
-              className={`font-bold px-16 py-6 rounded-2xl shadow-md transition-all duration-300 text-2xl w-full max-w-xs ${canProceed ? 'bg-templeDeepNavy text-white hover:bg-templeDeepNavy/90 hover:text-white' : 'bg-gray-300 text-gray-500 cursor-not-allowed'}`}
-              style={{ minWidth: 220 }}
-              disabled={!canProceed}
-              onClick={handleSubmit}
-            >
-              {isProcessing ? (
-                <>
-                  <Loader2 className="mr-2 h-5 w-5 animate-spin" />
-                  Processing...
-                </>
-              ) : !isRazorpayLoaded ? (
-                "Loading Payment..."
-              ) : (
-                "Order Deck"
-              )}
-            </Button>
-          </div>
           </div>
 
           {/* Checkout Form */}
@@ -401,6 +380,52 @@ export default function CheckoutPage() {
                 </CardContent>
               </Card>
             </form>
+            
+            {/* Order Deck Button - Mobile View */}
+            <div className="md:hidden flex justify-center w-full mt-8">
+              <Button
+                type="submit"
+                size="lg"
+                className={`font-bold px-16 py-6 rounded-2xl shadow-md transition-all duration-300 text-2xl w-full max-w-xs ${canProceed ? 'bg-sacredBellGold text-templeDeepNavy hover:bg-divineRoyalGold hover:text-scrollIvory' : 'bg-gray-300 text-gray-500 cursor-not-allowed'}`}
+                style={{ minWidth: 220 }}
+                disabled={!canProceed}
+                onClick={handleSubmit}
+              >
+                {isProcessing ? (
+                  <>
+                    <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+                    Processing...
+                  </>
+                ) : !isRazorpayLoaded ? (
+                  "Loading Payment..."
+                ) : (
+                  "Order Deck"
+                )}
+              </Button>
+            </div>
+            
+            {/* Order Deck Button - Desktop View */}
+            <div className="hidden md:flex justify-center w-full mt-6">
+              <Button
+                type="submit"
+                size="lg"
+                className={`font-bold px-16 py-6 rounded-2xl shadow-md transition-all duration-300 text-2xl w-full max-w-xs ${canProceed ? 'bg-sacredBellGold text-templeDeepNavy hover:bg-divineRoyalGold hover:text-scrollIvory' : 'bg-gray-300 text-gray-500 cursor-not-allowed'}`}
+                style={{ minWidth: 220 }}
+                disabled={!canProceed}
+                onClick={handleSubmit}
+              >
+                {isProcessing ? (
+                  <>
+                    <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+                    Processing...
+                  </>
+                ) : !isRazorpayLoaded ? (
+                  "Loading Payment..."
+                ) : (
+                  "Order Deck"
+                )}
+              </Button>
+            </div>
       </div>
     </div>
   )

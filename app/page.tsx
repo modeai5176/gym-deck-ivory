@@ -11,6 +11,7 @@ import FancyVideoPlayer from "./components/fancy-video-player"
 import { useState, useRef } from "react"
 import type { UseEmblaCarouselType } from "embla-carousel-react"
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from "@/components/ui/carousel"
+import EmailCapturePopup from "./components/email-capture-popup"
 
 export default function HomePage() {
   const [showAllBenefits, setShowAllBenefits] = useState(false)
@@ -439,6 +440,9 @@ export default function HomePage() {
           </ScrollReveal>
         </div>
       </section>
+      
+      {/* Email Capture Popup */}
+      <EmailCapturePopup />
     </div>
   )
 }

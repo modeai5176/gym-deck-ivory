@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Home Page -->
+  <url>
+    <loc>https://www.consciouskilo.com/</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Philosophy Page -->
+  <url>
+    <loc>https://www.consciouskilo.com/philosophy</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Talim Deck - Product Overview -->
+  <url>
+    <loc>https://www.consciouskilo.com/product</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Experience Page -->
+  <url>
+    <loc>https://www.consciouskilo.com/experience</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- About Us Page -->
+  <url>
+    <loc>https://www.consciouskilo.com/about</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Checkout / Purchase Page -->
+  <url>
+    <loc>https://www.consciouskilo.com/checkout</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Privacy Policy -->
+  <url>
+    <loc>https://www.consciouskilo.com/privacy</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <!-- Free Sample / Experience Section -->
+  <url>
+    <loc>https://www.consciouskilo.com/experience</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- How to Use Talim Deck (if separate page exists) -->
+  <url>
+    <loc>https://www.consciouskilo.com/product#how-to-use</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- FAQs Section (if separate page exists) -->
+  <url>
+    <loc>https://www.consciouskilo.com/product#faqs</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Buy Now / Purchase Section -->
+  <url>
+    <loc>https://www.consciouskilo.com/checkout</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Ancient Wisdom Section -->
+  <url>
+    <loc>https://www.consciouskilo.com/philosophy#ancient-wisdom</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Core Indian Workouts Section -->
+  <url>
+    <loc>https://www.consciouskilo.com/#core-indian-workouts</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- What Is an Indian Workout Section -->
+  <url>
+    <loc>https://www.consciouskilo.com/#what-is-indian-workout</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- India's Strength Lineage Section -->
+  <url>
+    <loc>https://www.consciouskilo.com/#strength-lineage</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Testimonials Section -->
+  <url>
+    <loc>https://www.consciouskilo.com/#testimonials</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Contact Information -->
+  <url>
+    <loc>https://www.consciouskilo.com/about#contact</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <!-- Legal / Copyright Information -->
+  <url>
+    <loc>https://www.consciouskilo.com/#footer</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <!-- Quick Links - Navigation -->
+  <url>
+    <loc>https://www.consciouskilo.com/#navigation</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+  </url>
+
+  <!-- Free Sample Download -->
+  <url>
+    <loc>https://www.consciouskilo.com/experience#free-sample</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Interactive Experience -->
+  <url>
+    <loc>https://www.consciouskilo.com/experience#interactive</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Product Features -->
+  <url>
+    <loc>https://www.consciouskilo.com/product#features</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Pricing Information -->
+  <url>
+    <loc>https://www.consciouskilo.com/product#pricing</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Shipping Information -->
+  <url>
+    <loc>https://www.consciouskilo.com/checkout#shipping</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Payment Information -->
+  <url>
+    <loc>https://www.consciouskilo.com/checkout#payment</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Return Policy -->
+  <url>
+    <loc>https://www.consciouskilo.com/product#returns</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <!-- Warranty Information -->
+  <url>
+    <loc>https://www.consciouskilo.com/product#warranty</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <!-- Customer Support -->
+  <url>
+    <loc>https://www.consciouskilo.com/about#support</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+
+
+</urlset> 

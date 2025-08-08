@@ -1,3 +1,6 @@
+"use client"
+
+import { useState } from "react"
 import { Heart, Mail, MapPin, Award, Users, Globe, Instagram } from "lucide-react"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
@@ -7,6 +10,62 @@ import ScrollReveal from "../components/scroll-reveal"
 import Image from "next/image"
 
 export default function AboutPage() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: ''
+  })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState<{
+    type: 'success' | 'error' | null
+    message: string
+  }>({ type: null, message: '' })
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    })
+  }
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+    setSubmitStatus({ type: null, message: '' })
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
+
+      const data = await response.json()
+
+      if (response.ok) {
+        setSubmitStatus({
+          type: 'success',
+          message: data.message
+        })
+        setFormData({ name: '', email: '', message: '' })
+      } else {
+        setSubmitStatus({
+          type: 'error',
+          message: data.error || 'Failed to send message'
+        })
+      }
+    } catch (error) {
+      setSubmitStatus({
+        type: 'error',
+        message: 'Network error. Please try again.'
+      })
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+
   return (
     <div className="pt-0 bg-templeDeepNavy">
       {/* Hero Section */}
@@ -128,13 +187,17 @@ export default function AboutPage() {
               <Card className="bg-white/90 border-divineRoyalGold/20 shadow-lg">
                 <CardContent className="p-8">
                   <h3 className="font-bold text-templeDeepNavy mb-6">Get in Touch</h3>
-                  <form className="space-y-6">
+                  <form onSubmit={handleSubmit} className="space-y-6">
                     <div>
                       <label htmlFor="name" className="block text-templeDeepNavy font-semibold mb-2">Name</label>
                       <Input
                         type="text"
                         id="name"
+                        name="name"
+                        value={formData.name}
+                        onChange={handleInputChange}
                         className="bg-white border-divineRoyalGold/20 text-templeDeepNavy placeholder-templeDeepNavy/50 focus:border-divineRoyalGold"
+                        required
                       />
                     </div>
 
@@ -143,7 +206,11 @@ export default function AboutPage() {
                       <Input
                         type="email"
                         id="email"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleInputChange}
                         className="bg-white border-divineRoyalGold/20 text-templeDeepNavy placeholder-templeDeepNavy/50 focus:border-divineRoyalGold"
+                        required
                       />
                     </div>
 
@@ -151,18 +218,33 @@ export default function AboutPage() {
                       <label htmlFor="message" className="block text-templeDeepNavy font-semibold mb-2">Message</label>
                       <Textarea
                         id="message"
+                        name="message"
+                        value={formData.message}
+                        onChange={handleInputChange}
                         rows={4}
                         className="bg-white border-divineRoyalGold/20 text-templeDeepNavy placeholder-templeDeepNavy/50 focus:border-divineRoyalGold"
+                        required
                       />
                     </div>
+
+                    {submitStatus.type && (
+                      <div className={`p-4 rounded-lg ${
+                        submitStatus.type === 'success' 
+                          ? 'bg-green-50 border border-green-200 text-green-800' 
+                          : 'bg-red-50 border border-red-200 text-red-800'
+                      }`}>
+                        {submitStatus.message}
+                      </div>
+                    )}
 
                     <Button
                       type="submit"
                       size="lg"
-                      className="w-full bg-sacredBellGold text-templeDeepNavy font-bold hover:bg-divineRoyalGold hover:text-scrollIvory transition-all duration-300 text-lg py-4 rounded-2xl font-semibold shadow-lg"
+                      disabled={isSubmitting}
+                      className="w-full bg-sacredBellGold text-templeDeepNavy font-bold hover:bg-divineRoyalGold hover:text-scrollIvory transition-all duration-300 text-lg py-4 rounded-2xl font-semibold shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                       <Mail className="mr-2 text-divineRoyalGold" size={20} />
-                      Send Message
+                      {isSubmitting ? 'Sending...' : 'Send Message'}
                     </Button>
                   </form>
                 </CardContent>
