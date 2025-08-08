@@ -405,7 +405,7 @@ export default function CheckoutPage() {
             </form>
             
             {/* Order Deck Button - Mobile View */}
-            <div className="md:hidden flex justify-center w-full mt-8">
+            <div className="md:hidden flex justify-center w-full mt-2 mb-4">
               <Button
                 type="submit"
                 size="lg"
