@@ -55,7 +55,7 @@ export default function PhilosophyPage() {
           <div className="absolute inset-0"></div>
           <div className="relative z-10 text-center max-w-5xl mx-auto px-4">
             <ScrollReveal>
-              <h1 className="font-aviano-copper text-3xl sm:text-4xl md:text-7xl font-bold mb-4 sm:mb-6 leading-tight text-divineRoyalGold break-words px-2">
+              <h1 className="font-aviano-copper text-3xl sm:text-4xl md:text-7xl font-bold mb-4 sm:mb-6 leading-tight text-sacredBellGold break-words px-2">
                 Philosophy
               </h1>
             </ScrollReveal>
@@ -75,7 +75,7 @@ export default function PhilosophyPage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <ScrollReveal>
               <div className="text-center mb-16">
-                <h2 className="font-aviano-copper text-4xl md:text-5xl font-bold text-divineRoyalGold mb-6">
+                <h2 className="font-aviano-copper text-4xl md:text-5xl font-bold text-sacredBellGold mb-6">
                   Our Foundation
                 </h2>
                 <p className="text-xl text-scrollIvory max-w-4xl mx-auto leading-relaxed">
@@ -91,7 +91,7 @@ export default function PhilosophyPage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <ScrollReveal>
               <div className="text-center mb-16">
-                <h2 className="font-aviano-copper text-4xl md:text-5xl font-bold text-divineRoyalGold mb-6">
+                <h2 className="font-aviano-copper text-4xl md:text-5xl font-bold text-sacredBellGold mb-6">
                   The Three Pillars
                 </h2>
                 <p className="text-xl text-scrollIvory max-w-3xl mx-auto">
@@ -152,7 +152,7 @@ export default function PhilosophyPage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <ScrollReveal>
               <div className="text-center mb-16">
-                <h2 className="font-aviano-copper text-4xl md:text-5xl font-bold text-divineRoyalGold mb-6">
+                <h2 className="font-aviano-copper text-4xl md:text-5xl font-bold text-sacredBellGold mb-6">
                   The Akhara Tradition
                 </h2>
               </div>
@@ -185,7 +185,7 @@ export default function PhilosophyPage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <ScrollReveal>
               <div className="text-center mb-16">
-                <h2 className="font-aviano-copper text-4xl md:text-5xl font-bold text-divineRoyalGold mb-6">
+                <h2 className="font-aviano-copper text-4xl md:text-5xl font-bold text-sacredBellGold mb-6">
                   The Daily Rhythm
                 </h2>
                 <p className="text-xl text-scrollIvory max-w-3xl mx-auto">
@@ -259,7 +259,7 @@ export default function PhilosophyPage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <ScrollReveal>
               <div className="text-center mb-16 animate-fade-in-up">
-                <h2 className="font-aviano-copper text-4xl md:text-5xl font-bold text-divineRoyalGold mb-6">
+                <h2 className="font-aviano-copper text-4xl md:text-5xl font-bold text-sacredBellGold mb-6">
                   Ancient Wisdom, Modern Life
                 </h2>
                 <p className="text-scrollIvory text-lg leading-relaxed mb-6">
@@ -305,7 +305,7 @@ export default function PhilosophyPage() {
           <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
             <ScrollReveal>
               <div className="animate-fade-in-up">
-                <h2 className="font-aviano-copper text-4xl md:text-5xl font-bold text-divineRoyalGold mb-6">
+                <h2 className="font-aviano-copper text-4xl md:text-5xl font-bold text-sacredBellGold mb-6">
                   Start Your Journey
                 </h2>
                 <p className="text-scrollIvory text-lg leading-relaxed mb-8">

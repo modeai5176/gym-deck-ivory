@@ -66,7 +66,7 @@ export default function ProductPage() {
           <div className="absolute inset-0"></div>
           <div className="relative z-10 text-center max-w-5xl mx-auto px-4">
             <ScrollReveal>
-              <h1 className="font-aviano-copper text-5xl md:text-8xl font-bold mb-6 leading-tight text-divineRoyalGold">
+              <h1 className="font-aviano-copper text-5xl md:text-8xl font-bold mb-6 leading-tight text-sacredBellGold">
                 TALIM DECK
               </h1>
             </ScrollReveal>
@@ -86,7 +86,7 @@ export default function ProductPage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <ScrollReveal>
               <div className="text-center mb-16">
-                <h2 className="font-aviano-copper text-4xl md:text-5xl font-bold text-divineRoyalGold mb-6">
+                <h2 className="font-aviano-copper text-4xl md:text-5xl font-bold text-sacredBellGold mb-6">
                   What's inside your Deck
                 </h2>
                 <p className="text-xl text-scrollIvory max-w-3xl mx-auto">
@@ -299,7 +299,7 @@ export default function ProductPage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <ScrollReveal>
               <div className="text-center mb-16">
-                <h2 className="font-aviano-copper text-4xl md:text-5xl font-bold text-divineRoyalGold mb-6">
+                <h2 className="font-aviano-copper text-4xl md:text-5xl font-bold text-sacredBellGold mb-6">
                   How to Use your Deck
                 </h2>
             </div>
@@ -357,7 +357,7 @@ export default function ProductPage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <ScrollReveal>
               <div className="text-center mb-16">
-                <h2 className="font-aviano-copper text-4xl md:text-5xl font-bold text-divineRoyalGold mb-6">
+                <h2 className="font-aviano-copper text-4xl md:text-5xl font-bold text-sacredBellGold mb-6">
                   Begin your journey
                 </h2>
                 <p className="text-xl text-scrollIvory max-w-3xl mx-auto">
@@ -405,7 +405,7 @@ export default function ProductPage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <ScrollReveal>
               <div className="text-center mb-16">
-                <h2 className="font-aviano-copper text-4xl md:text-5xl font-bold text-divineRoyalGold mb-6">
+                <h2 className="font-aviano-copper text-4xl md:text-5xl font-bold text-sacredBellGold mb-6">
                   FAQs
                 </h2>
                 <p className="text-xl text-scrollIvory max-w-3xl mx-auto">

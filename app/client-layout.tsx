@@ -4,6 +4,7 @@ import type React from "react"
 import Navigation from "./components/navigation"
 import Footer from "./components/footer"
 import CookieConsent from "./components/cookie-consent"
+import EmailCapturePopup from "./components/email-capture-popup"
 
 export default function ClientLayout({
   children,
@@ -16,6 +17,7 @@ export default function ClientLayout({
         <main>{children}</main>
         <Footer />
         <CookieConsent />
+        <EmailCapturePopup />
     </>
   )
 }

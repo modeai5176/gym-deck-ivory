@@ -5,7 +5,7 @@ export default function TimelineSection() {
     <section className="bg-sacredSoftNavy py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="font-aviano-copper text-4xl md:text-5xl font-bold text-divineRoyalGold mb-6">What Is an Indian Workout?</h2>
+          <h2 className="font-aviano-copper text-4xl md:text-5xl font-bold text-sacredBellGold mb-6">What Is an Indian Workout?</h2>
         <p className="text-xl text-scrollIvory max-w-3xl mx-auto">
             A journey through time, from ancient Vedic practices to modern strength training
           </p>

@@ -3,10 +3,9 @@
 import type React from "react"
 
 import { useState } from "react"
-import { Shuffle, Volume2, ArrowRight, Sparkles, Check } from "lucide-react"
+import { Shuffle, Volume2, ArrowRight, Sparkles } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
 import Link from "next/link"
 import ScrollReveal from "../components/scroll-reveal"
 import { useIsMobile } from "@/hooks/use-mobile"
@@ -83,8 +82,6 @@ export default function ExperiencePage() {
   const [selectedCards, setSelectedCards] = useState<typeof sampleCards>([])
   const [currentCardIndex, setCurrentCardIndex] = useState(0)
   const [isFlipped, setIsFlipped] = useState(false)
-  const [email, setEmail] = useState("")
-  const [isSubmitted, setIsSubmitted] = useState(false)
   const [isDrawing, setIsDrawing] = useState(false)
 
   const drawCards = () => {
@@ -112,10 +109,7 @@ export default function ExperiencePage() {
     }
   }
 
-  const handleEmailSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsSubmitted(true)
-  }
+
 
   const currentCard = selectedCards[currentCardIndex]
   const isMobile = useIsMobile();
@@ -127,7 +121,7 @@ export default function ExperiencePage() {
         <div className="absolute inset-0"></div>
         <div className="relative z-10 text-center max-w-5xl mx-auto px-4">
           <ScrollReveal>
-            <h1 className="font-aviano-copper text-4xl md:text-7xl font-bold mb-6 leading-tight text-divineRoyalGold">
+            <h1 className="font-aviano-copper text-4xl md:text-7xl font-bold mb-6 leading-tight text-sacredBellGold">
               Experience the Magic
             </h1>
           </ScrollReveal>
@@ -154,7 +148,7 @@ export default function ExperiencePage() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
             <div className="text-center mb-12">
-              <h2 className="font-aviano-copper text-4xl md:text-5xl font-bold text-divineRoyalGold mb-6">Curious to Know What Your Workout Looks Like Today?</h2>
+              <h2 className="font-aviano-copper text-4xl md:text-5xl font-bold text-sacredBellGold mb-6">Curious to Know What Your Workout Looks Like Today?</h2>
               <p className="text-scrollIvory text-xl max-w-3xl mx-auto mb-8">
                 Click the button below to randomly generate three cards from our sample collection. These picks offer just a glimpse into the full experience waiting inside the complete deck.
               </p>
@@ -301,77 +295,7 @@ export default function ExperiencePage() {
       </section>
       <div className="border-t border-divineRoyalGold" />
 
-      {/* Email Capture */}
-      <section className="py-20 bg-templeDeepNavy">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <ScrollReveal>
-            <div className="text-center mb-12">
-              <h2 className="font-aviano-copper text-4xl md:text-5xl font-bold text-divineRoyalGold mb-6">
-                Want More Workout Cards?
-              </h2>
-              <p className="text-scrollIvory text-xl max-w-3xl mx-auto mb-8">
-                Get a free 7-card digital sampler delivered to your inbox. Experience more of the ancient wisdom that
-                awaits in the complete 80-card deck.
-              </p>
-            </div>
-          </ScrollReveal>
 
-          <ScrollReveal delay={200}>
-            <Card className="bg-white/50 backdrop-blur-sm border-gray-300/30 max-w-2xl mx-auto">
-              <CardContent className="p-8">
-                {!isSubmitted ? (
-                  <form onSubmit={handleEmailSubmit} className="space-y-6">
-                    <div>
-                      <label htmlFor="email" className="block text-scrollIvory font-semibold mb-2">
-                        Email Address
-                      </label>
-                      <Input
-                        type="email"
-                        id="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        placeholder="Enter your email for free sampler"
-                        required
-                        className="bg-white/50 border-gray-300/30 text-black placeholder-gray-500 focus:border-divineRoyalGold"
-                      />
-                    </div>
-
-                    <Button
-                      type="submit"
-                      size="lg"
-                      className="w-full bg-sacredBellGold text-templeDeepNavy font-bold hover:bg-divineRoyalGold hover:text-scrollIvory transition-all duration-300 text-lg py-4 rounded-2xl font-semibold shadow-lg"
-                    >
-                      <Sparkles className="mr-2" size={20} />
-                      Get Free 7-Card Sampler
-                    </Button>
-
-                    <p className="text-scrollIvory text-sm text-center">
-                      No spam, just workout wisdom. Unsubscribe anytime.
-                    </p>
-                  </form>
-                ) : (
-                  <div className="text-center">
-                    <div className="text-6xl mb-4">✨</div>
-                    <h3 className="font-bold text-divineRoyalGold mb-4">Thank You for Your Interest!</h3>
-                    <p className="text-scrollIvory mb-6">
-                      Your free 7-card sampler is on its way to your inbox. Check your email in the next few minutes.
-                    </p>
-                    <Link href="/checkout">
-                      <Button
-                        size="lg"
-                        className="bg-sacredBellGold text-templeDeepNavy font-bold hover:bg-divineRoyalGold hover:text-scrollIvory transition-all duration-300 text-lg px-8 py-4 rounded-2xl font-semibold shadow-lg"
-                      >
-                        Get the Complete Deck
-                        <ArrowRight className="ml-2" size={20} />
-                      </Button>
-                    </Link>
-                  </div>
-                )}
-              </CardContent>
-            </Card>
-          </ScrollReveal>
-        </div>
-      </section>
 
       {/* Features of Full Deck */}
       {/* Section removed as per user request */}

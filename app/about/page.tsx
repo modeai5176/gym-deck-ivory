@@ -73,7 +73,7 @@ export default function AboutPage() {
         <div className="absolute inset-0"></div>
         <div className="relative z-10 text-center max-w-5xl mx-auto px-4">
           <ScrollReveal>
-            <h1 className="font-aviano-copper text-5xl md:text-7xl font-bold mb-6 leading-tight text-divineRoyalGold">
+            <h1 className="font-aviano-copper text-5xl md:text-7xl font-bold mb-6 leading-tight text-sacredBellGold">
               About Us
             </h1>
           </ScrollReveal>
@@ -91,7 +91,7 @@ export default function AboutPage() {
 
       {/* Founder's Story */}
       <section className="py-20 px-4 md:px-0 bg-sacredSoftNavy">
-        <h2 className="font-aviano-copper text-3xl md:text-5xl font-bold text-center mb-10 text-divineRoyalGold">A Note From Our Founder</h2>
+        <h2 className="font-aviano-copper text-3xl md:text-5xl font-bold text-center mb-10 text-sacredBellGold">A Note From Our Founder</h2>
         <div className="bg-white rounded-2xl shadow-lg p-8 md:p-12 max-w-[1000px] mx-auto border border-neutral-200 min-h-[520px]">
           {/* Card background and text colors preserved */}
           <img
@@ -119,7 +119,7 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
             <div className="text-center mb-16">
-              <h2 className="font-aviano-copper text-4xl md:text-5xl font-bold text-divineRoyalGold mb-6">Our Core Values</h2>
+              <h2 className="font-aviano-copper text-4xl md:text-5xl font-bold text-sacredBellGold mb-6">Our Core Values</h2>
               <p className="text-scrollIvory text-xl max-w-3xl mx-auto">
                 Every decision we make is guided by these timeless principles that have shaped Indian culture for millennia
               </p>
@@ -175,7 +175,7 @@ export default function AboutPage() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
             <div className="text-center mb-12">
-              <h2 className="font-aviano-copper text-4xl md:text-5xl font-bold text-divineRoyalGold mb-6">Connect With Us</h2>
+              <h2 className="font-aviano-copper text-4xl md:text-5xl font-bold text-sacredBellGold mb-6">Connect With Us</h2>
               <p className="text-scrollIvory text-xl max-w-3xl mx-auto">
                 Have questions about the practices? Want to share your transformation story? We'd love to hear from you.
               </p>
@@ -321,14 +321,14 @@ export default function AboutPage() {
       <section className="py-20 bg-templeDeepNavy">
         <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
-            <h2 className="font-aviano-copper text-4xl md:text-5xl font-bold text-divineRoyalGold mb-6">
+            <h2 className="font-aviano-copper text-4xl md:text-5xl font-bold text-sacredBellGold mb-6">
               Thank You for Being Part of Our Journey
             </h2>
             <p className="text-scrollIvory text-xl mb-8 leading-relaxed">
               Every practitioner who embraces these ancient methods helps preserve them for future generations.
               Together, we're not just building stronger bodies—we're building a stronger, more connected world.
             </p>
-            <p className="font-aviano-copper text-2xl text-divineRoyalGold italic">
+            <p className="font-aviano-copper text-2xl text-sacredBellGold italic">
               "In serving others, we find our own strength. In honoring tradition, we create the future."
             </p>
           </ScrollReveal>

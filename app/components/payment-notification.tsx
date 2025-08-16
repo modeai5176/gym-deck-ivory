@@ -69,7 +69,7 @@ export default function PaymentNotification({
   if (!isVisible) return null
 
   return (
-    <div className={`fixed top-4 right-4 z-50 max-w-sm w-full ${isClosing ? 'animate-slide-out' : 'animate-slide-in'}`}>
+    <div className={`fixed top-4 z-50 max-w-sm w-full ${isClosing ? 'animate-slide-out' : 'animate-slide-in'} left-1/2 -translate-x-1/2 md:left-auto md:translate-x-0 md:right-4`}>
       <div className={`${getBgColor()} border rounded-lg shadow-lg p-4`}>
         <div className="flex items-start">
           <div className="flex-shrink-0">

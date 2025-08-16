@@ -11,7 +11,7 @@ import FancyVideoPlayer from "./components/fancy-video-player"
 import { useState, useRef } from "react"
 import type { UseEmblaCarouselType } from "embla-carousel-react"
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from "@/components/ui/carousel"
-import EmailCapturePopup from "./components/email-capture-popup"
+
 
 export default function HomePage() {
   const [showAllBenefits, setShowAllBenefits] = useState(false)
@@ -21,7 +21,22 @@ export default function HomePage() {
   return (
     <div className="pt-0 bg-templeDeepNavy">
       {/* Hero Section */}
-      <section className="min-h-screen flex items-center justify-center text-scrollIvory relative overflow-hidden mt-0 bg-templeDeepNavy">
+      <section className="min-h-screen flex items-center justify-center text-scrollIvory relative overflow-hidden mt-0">
+        {/* Video Background */}
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover z-0"
+        >
+          <source src="/video.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+        
+        {/* Dark overlay for better text readability */}
+        <div className="absolute inset-0 bg-black/45 z-0"></div>
+        
         <div className="relative z-10 text-center max-w-5xl mx-auto px-4">
           <ScrollReveal>
             <h1 className="font-aviano-copper text-5xl md:text-7xl font-bold mb-6 leading-tight text-sacredBellGold">
@@ -46,13 +61,14 @@ export default function HomePage() {
           </ScrollReveal>
         </div>
       </section>
-      <div className="border-t border-divineRoyalGold" />
       {/* Sacred by the Numbers */}
-      <section className="py-20 bg-sacredSoftNavy">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-20 bg-gradient-to-b from-black/38 via-templeDeepNavy to-sacredSoftNavy relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-transparent to-black/35"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-transparent"></div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <ScrollReveal>
             <div className="text-center mb-16">
-              <h2 className="font-aviano-copper text-4xl md:text-5xl font-bold text-divineRoyalGold mb-6">India's Strength Lineage</h2>
+              <h2 className="font-aviano-copper text-4xl md:text-5xl font-bold text-sacredBellGold mb-6">India's Strength Lineage</h2>
               <p className="text-xl text-scrollIvory max-w-3xl mx-auto">
                 Skill inclusive From village akharas to royal courts, these practices welcomed everyone—regardless of age, background or ability—to hone skill, grace and resilience together.
               </p>
@@ -82,7 +98,7 @@ export default function HomePage() {
       <section className="py-16 bg-templeDeepNavy">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="font-aviano-copper text-4xl md:text-5xl font-bold text-divineRoyalGold mb-4">Core Indian Workouts</h2>
+            <h2 className="font-aviano-copper text-4xl md:text-5xl font-bold text-sacredBellGold mb-4">Core Indian Workouts</h2>
             <p className="text-lg text-scrollIvory max-w-2xl mx-auto">Watch the foundational movements of Indian physical culture, performed by our expert. These timeless exercises build strength, mobility, and resilience.</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -91,7 +107,7 @@ export default function HomePage() {
               <div className="w-full aspect-[5/9] mb-4">
                 <FancyVideoPlayer src="/dand.mp4" title="Dand Exercise" poster="/dand.webp" />
               </div>
-              <div className="font-bold text-divineRoyalGold mb-2 text-center">Dand</div>
+              <div className="font-bold text-sacredBellGold mb-2 text-center">Dand</div>
               <div className="text-templeDeepNavy text-center text-sm">A flowing full-body movement from Indian traditions that builds strength, flexibility, and coordination for enhanced body awareness.</div>
             </div>
             {/* Card 2 */}
@@ -99,7 +115,7 @@ export default function HomePage() {
               <div className="w-full aspect-[5/9] mb-4">
                 <FancyVideoPlayer src="/baithak.mp4" title="Baithak Exercise" poster="/baithak.webp" />
               </div>
-              <div className="font-bold text-divineRoyalGold mb-2 text-center">Baithak</div>
+              <div className="font-bold text-sacredBellGold mb-2 text-center">Baithak</div>
               <div className="text-templeDeepNavy text-center text-sm">A traditional standing-repetition exercise that develops endurance, balance, and mental focus for greater control and stability.</div>
             </div>
             {/* Card 3 */}
@@ -107,7 +123,7 @@ export default function HomePage() {
               <div className="w-full aspect-[5/9] rounded-xl overflow-hidden mb-4 flex items-center justify-center">
                 <FancyVideoPlayer src="/sapate.mp4" title="Sapate Exercise" poster="/sapate.webp" />
               </div>
-              <div className="font-bold text-divineRoyalGold mb-2 text-center">Sapate</div>
+              <div className="font-bold text-sacredBellGold mb-2 text-center">Sapate</div>
               <div className="text-templeDeepNavy text-center text-sm">Quick, rhythmic footwork drills that improve speed, timing, and agility for smooth, responsive motion in dynamic situations.</div>
             </div>
           </div>
@@ -122,7 +138,7 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
             <div className="text-center mb-16">
-              <h2 className="font-aviano-copper text-4xl md:text-5xl font-bold text-divineRoyalGold mb-6">
+              <h2 className="font-aviano-copper text-4xl md:text-5xl font-bold text-sacredBellGold mb-6">
                 The Science Behind the Roots
               </h2>
               <p className="text-xl text-scrollIvory max-w-3xl mx-auto">
@@ -263,7 +279,7 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
             <div className="text-center mb-16">
-              <h2 className="font-aviano-copper text-4xl md:text-5xl font-bold text-divineRoyalGold mb-6">
+              <h2 className="font-aviano-copper text-4xl md:text-5xl font-bold text-sacredBellGold mb-6">
                 Walking in Legendary Footsteps
               </h2>
               <p className="text-xl text-scrollIvory max-w-3xl mx-auto">
@@ -330,7 +346,7 @@ export default function HomePage() {
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
             <div className="text-center mb-16">
-              <h2 className="font-aviano-copper text-4xl md:text-5xl font-bold text-divineRoyalGold mb-6">What Practitioners Say</h2>
+              <h2 className="font-aviano-copper text-4xl md:text-5xl font-bold text-sacredBellGold mb-6">What Practitioners Say</h2>
             </div>
           </ScrollReveal>
 
@@ -412,7 +428,7 @@ export default function HomePage() {
             <p className="italic text-divineRoyalGold">"कायः क्लेशसहिष्णुः सदा साधनाय योग्यता।"</p>
             <p className="text-scrollIvory mb-2">A body that endures hardship is always fit for higher pursuit.</p>
             <p className="text-wisdomSandGold mb-8">– Traditional Wisdom</p>
-            <h2 className="font-aviano-copper text-4xl md:text-6xl font-bold text-divineRoyalGold mb-8">Explore the Deck</h2>
+            <h2 className="font-aviano-copper text-4xl md:text-6xl font-bold text-sacredBellGold mb-8">Explore the Deck</h2>
             <p className="text-scrollIvory mb-8 max-w-2xl mx-auto leading-relaxed">
               Ready to experience these traditions in action? Draw three cards now to reveal today's tailored workout—each card is a bridge between ancient wisdom and your fitness journey. Embrace the surprise, flow with the challenge, and step into a practice that's as dynamic as you are.
             </p>
@@ -441,8 +457,6 @@ export default function HomePage() {
         </div>
       </section>
       
-      {/* Email Capture Popup */}
-      <EmailCapturePopup />
     </div>
   )
 }

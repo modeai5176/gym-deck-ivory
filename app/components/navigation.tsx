@@ -3,12 +3,13 @@
 import Link from "next/link"
 import Image from "next/image"
 import { useState, useEffect } from "react"
-import { Menu, X, ShoppingBag } from "lucide-react"
+import { Menu, X, ShoppingBag, Gift } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const [isGetDeckPressed, setIsGetDeckPressed] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -40,7 +41,7 @@ export default function Navigation() {
 
           {/* Navigation Links - Center */}
           <div className="hidden md:flex flex-1 justify-center">
-            <div className="backdrop-blur-md border border-gray-200 rounded-xl px-4 py-2 flex space-x-4">
+            <div className="backdrop-blur-md border border-gray-200 rounded-xl px-4 py-2 flex space-x-4 hover:border-black transition-colors duration-300">
               {[
                 { href: "/", label: "Home" },
                 { href: "/philosophy", label: "Philosophy" },
@@ -61,6 +62,23 @@ export default function Navigation() {
 
           {/* Action Buttons - Right */}
           <div className="hidden md:flex items-center space-x-2 flex-shrink-0">
+            <Button 
+              onClick={() => {
+                console.log('Unlock Deal button clicked!')
+                // @ts-ignore
+                if (window.showEmailPopup) {
+                  console.log('window.showEmailPopup exists, calling it...')
+                  // @ts-ignore
+                  window.showEmailPopup()
+                } else {
+                  console.log('window.showEmailPopup does not exist!')
+                }
+              }}
+              className="bg-templeDeepNavy text-white font-bold px-4 py-2 rounded-lg transition-all duration-300 text-sm hover:bg-sacredSoftNavy hover:text-scrollIvory border border-sacredBellGold/30"
+            >
+              <Gift className="mr-1" size={14} />
+              Unlock Deal
+            </Button>
             <Link href="/checkout">
               <Button className="bg-sacredBellGold text-templeDeepNavy font-bold px-4 py-2 rounded-lg transition-all duration-300 text-sm hover:bg-divineRoyalGold hover:text-scrollIvory">
                 <ShoppingBag className="mr-1" size={14} />
@@ -69,8 +87,26 @@ export default function Navigation() {
             </Link>
           </div>
 
-          {/* Mobile Menu Button */}
-          <div className="md:hidden">
+          {/* Mobile Action Buttons */}
+          <div className="md:hidden flex items-center space-x-2">
+                          <Button 
+                onClick={() => {
+                  setIsGetDeckPressed(true)
+                  setTimeout(() => {
+                    setIsGetDeckPressed(false)
+                    // Navigate after the animation
+                    window.location.href = '/checkout'
+                  }, 150)
+                }}
+                                  className={`font-bold px-4 py-1 rounded-lg transition-all duration-300 text-xs ${
+                    isGetDeckPressed 
+                      ? 'bg-yellow-500 text-templeDeepNavy' 
+                      : 'bg-sacredBellGold text-templeDeepNavy hover:bg-yellow-500 hover:text-templeDeepNavy'
+                  }`}
+              >
+                <ShoppingBag className="mr-1" size={12} />
+                Get Deck
+              </Button>
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="backdrop-blur-md border border-gray-200 text-gray-800 p-2 rounded-lg transition-all duration-300"
@@ -101,13 +137,26 @@ export default function Navigation() {
                 {item.label}
               </Link>
             ))}
-            <div className="pt-3 border-t border-gray-200">
-              <Link href="/checkout" className="block" onClick={() => setIsOpen(false)}>
-                <Button className="w-full bg-sacredBellGold text-templeDeepNavy font-bold hover:bg-divineRoyalGold hover:text-scrollIvory transition-all duration-300">
-                  <ShoppingBag className="mr-2" size={16} />
-                  Get Deck
-                </Button>
-              </Link>
+            <div className="pt-3 border-t border-gray-200 space-y-2">
+              <Button 
+                onClick={() => {
+                  console.log('Mobile Unlock Deal button clicked!')
+                  setIsOpen(false)
+                  // @ts-ignore
+                  if (window.showEmailPopup) {
+                    console.log('Mobile: window.showEmailPopup exists, calling it...')
+                    // @ts-ignore
+                    window.showEmailPopup()
+                  } else {
+                    console.log('Mobile: window.showEmailPopup does not exist!')
+                  }
+                }}
+                className="w-full bg-templeDeepNavy text-white font-bold hover:bg-sacredSoftNavy hover:text-scrollIvory transition-all duration-300 border border-sacredBellGold/30"
+              >
+                <Gift className="mr-2" size={16} />
+                Unlock Deal
+              </Button>
+
             </div>
           </div>
         </div>

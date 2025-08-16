@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { Shield, Truck, CreditCard, Loader2 } from "lucide-react"
+import { Shield, Truck, CreditCard, Loader2, Gift, Check, X } from "lucide-react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -23,6 +23,9 @@ export default function CheckoutPage() {
   })
   const [isProcessing, setIsProcessing] = useState(false)
   const [isRazorpayLoaded, setIsRazorpayLoaded] = useState(false)
+  const [promoCode, setPromoCode] = useState('')
+  const [isPromoApplied, setIsPromoApplied] = useState(false)
+  const [promoError, setPromoError] = useState('')
   const [notification, setNotification] = useState<{
     type: 'success' | 'error' | 'warning'
     message: string
@@ -53,6 +56,31 @@ export default function CheckoutPage() {
     })
   }
 
+  const handlePromoCode = () => {
+    const code = promoCode.trim().toUpperCase()
+    
+    if (code === 'TALIM10') {
+      setIsPromoApplied(true)
+      setPromoError('')
+      setNotification({
+        type: 'success',
+        message: '🎉 Extra 10% discount applied!',
+        isVisible: true
+      })
+      // Hide notification after 3 seconds
+      setTimeout(() => setNotification(prev => ({ ...prev, isVisible: false })), 3000)
+    } else {
+      setPromoError('Invalid promo code. Please try again.')
+      setIsPromoApplied(false)
+    }
+  }
+
+  const removePromoCode = () => {
+    setIsPromoApplied(false)
+    setPromoCode('')
+    setPromoError('')
+  }
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsProcessing(true)
@@ -65,9 +93,9 @@ export default function CheckoutPage() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          amount: 1, // Testing with 1 rupee
+          amount: isPromoApplied ? 1300 : 1444, // ₹1300 or ₹1444 in rupees
           currency: 'INR',
-          receipt: `talim_deck_test_${Date.now()}`,
+          receipt: `talim_deck_${Date.now()}`,
         }),
       })
 
@@ -200,15 +228,38 @@ export default function CheckoutPage() {
                   <span className="inline-block text-xs text-templeDeepNavy/80 rounded px-2 py-1 mt-1">Premium Edition</span>
                   </div>
                 <div className="text-right">
-                  <p className="text-lg font-bold text-templeDeepNavy">₹1</p>
+                  <div className="flex flex-col items-end space-y-1">
+                    {/* Original Price with Slash */}
+                    <div className="relative">
+                      <span className="text-sm text-gray-500 line-through">₹1699</span>
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <div className="w-full h-0.5 bg-gray-400 transform -rotate-12 origin-center"></div>
+                      </div>
+                    </div>
+                    {/* Discounted Price */}
+                    <div className="flex items-center space-x-2">
+                      <span className="text-lg font-bold text-templeDeepNavy">₹1444</span>
+                      <span className="text-xs bg-green-500 text-white px-2 py-1 rounded-full font-bold">15% OFF</span>
+                    </div>
+                  </div>
                 </div>
               </div>
                 {/* Pricing Breakdown */}
               <div className="space-y-1 border-t border-templeDeepNavy/20 pt-3">
                 <div className="flex justify-between text-templeDeepNavy/80">
                     <span>Subtotal</span>
-                  <span>₹1</span>
+                  <span>₹1699</span>
                   </div>
+                <div className="flex justify-between text-templeDeepNavy/80">
+                    <span>New launch Discount (15%)</span>
+                  <span className="text-green-600">-₹255</span>
+                  </div>
+                {isPromoApplied && (
+                  <div className="flex justify-between text-templeDeepNavy/80">
+                    <span>Extra 10% Discount (TALIM10)</span>
+                    <span className="text-green-600">-₹144</span>
+                  </div>
+                )}
                 <div className="flex justify-between text-templeDeepNavy/80">
                     <span>Shipping</span>
                   <span className="text-templeDeepNavy">Free</span>
@@ -219,8 +270,59 @@ export default function CheckoutPage() {
                   </div>
                 <div className="flex justify-between text-templeDeepNavy font-bold border-t border-templeDeepNavy/20 pt-2">
                     <span>Total</span>
-                  <span>₹1</span>
+                  <span>₹{isPromoApplied ? '1300' : '1444'}</span>
                 </div>
+                  </div>
+
+                  {/* Promo Code Section */}
+                  <div className="border-t border-templeDeepNavy/20 pt-4">
+                    {!isPromoApplied ? (
+                      <div className="space-y-3">
+                        <div className="flex items-center gap-2">
+                          <Gift className="text-sacredBellGold" size={18} />
+                          <span className="text-sm font-medium text-templeDeepNavy">Have a promo code?</span>
+                        </div>
+                        <div className="flex gap-2">
+                          <Input
+                            type="text"
+                            placeholder="Enter promo code"
+                            value={promoCode}
+                            onChange={(e) => setPromoCode(e.target.value)}
+                            className="flex-1 border-templeDeepNavy/20 focus:border-sacredBellGold text-sm"
+                            onKeyPress={(e) => e.key === 'Enter' && handlePromoCode()}
+                          />
+                          <Button
+                            onClick={handlePromoCode}
+                            className="bg-sacredBellGold text-templeDeepNavy hover:bg-divineRoyalGold hover:text-scrollIvory px-4 py-2 text-sm font-medium"
+                          >
+                            Apply
+                          </Button>
+                        </div>
+                        {promoError && (
+                          <p className="text-red-500 text-xs">{promoError}</p>
+                        )}
+                      </div>
+                    ) : (
+                      <div className="bg-green-50 border border-green-200 rounded-lg p-3">
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center gap-2">
+                            <Check className="text-green-600" size={18} />
+                            <span className="text-sm font-medium text-green-800">
+                              Promo code <span className="font-bold">TALIM10</span> applied!
+                            </span>
+                          </div>
+                          <button
+                            onClick={removePromoCode}
+                            className="text-green-600 hover:text-green-800 p-1"
+                          >
+                            <X size={16} />
+                          </button>
+                        </div>
+                        <p className="text-xs text-green-700 mt-1">
+                          Extra 10% discount applied - Save ₹144 more!
+                        </p>
+                      </div>
+                    )}
                   </div>
               {/* Features */}
               <div className="space-y-1 border-t border-templeDeepNavy/20 pt-3 text-templeDeepNavy text-sm">
