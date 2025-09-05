@@ -1,14 +1,14 @@
 import { NextRequest, NextResponse } from 'next/server'
 import nodemailer from 'nodemailer'
 
-// Create transporter with Gmail SMTP
+// Create transporter with Office365 SMTP
 const transporter = nodemailer.createTransport({
-  host: 'smtp.gmail.com',
+  host: 'smtp.office365.com',
   port: 587,
-  secure: false, // true for 465, false for other ports
+  secure: false, // STARTTLS
   auth: {
-    user: process.env.EMAIL_USER || 'shop@consciouskilo.com',
-    pass: process.env.EMAIL_PASS || 'wida nojs kwpb esyi', // App password
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASS,
   },
   tls: {
     rejectUnauthorized: false
@@ -51,8 +51,8 @@ export async function POST(request: NextRequest) {
 
     // Email content
     const mailOptions = {
-      from: process.env.EMAIL_USER || 'shop@consciouskilo.com',
-      to: process.env.EMAIL_USER || 'shop@consciouskilo.com',
+      from: process.env.EMAIL_USER,
+      to: process.env.EMAIL_USER,
       subject: `New Contact Form Message from ${name}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
@@ -87,49 +87,9 @@ export async function POST(request: NextRequest) {
     // Send email
     await transporter.sendMail(mailOptions)
 
-    // Send confirmation email to the user
-    const confirmationMailOptions = {
-      from: process.env.EMAIL_USER || 'shop@consciouskilo.com',
-      to: email,
-      subject: 'Thank you for contacting Conscious Kilo',
-      html: `
-        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-          <h2 style="color: #0B1F3F; border-bottom: 2px solid #D4AF37; padding-bottom: 10px;">
-            Thank you for reaching out!
-          </h2>
-          
-          <p>Dear ${name},</p>
-          
-          <p>Thank you for contacting Conscious Kilo. We have received your message and will get back to you within 24 hours.</p>
-          
-          <div style="background-color: #f9f9f9; padding: 20px; border-radius: 8px; margin: 20px 0;">
-            <h3 style="color: #0B1F3F; margin-top: 0;">Your Message:</h3>
-            <div style="background-color: white; padding: 15px; border-radius: 5px; border-left: 4px solid #D4AF37;">
-              ${message.replace(/\n/g, '<br>')}
-            </div>
-          </div>
-          
-          <p>In the meantime, feel free to explore our website and learn more about our Indian bodyweight exercise traditions.</p>
-          
-          <div style="text-align: center; margin: 30px 0;">
-            <a href="https://consciouskilo.com" style="background-color: #D4AF37; color: #0B1F3F; padding: 12px 24px; text-decoration: none; border-radius: 5px; font-weight: bold;">
-              Visit Our Website
-            </a>
-          </div>
-          
-          <hr style="border: none; border-top: 1px solid #ddd; margin: 30px 0;">
-          <p style="color: #666; font-size: 12px; text-align: center;">
-            Conscious Kilo - Where Culture Meets Strength
-          </p>
-        </div>
-      `,
-    }
-
-    await transporter.sendMail(confirmationMailOptions)
-
     return NextResponse.json({
       success: true,
-      message: 'Message sent successfully! You will receive a confirmation email shortly.',
+      message: 'Message sent successfully! We will get back to you soon.',
     })
   } catch (error) {
     console.error('Email sending error:', error)
@@ -137,10 +97,12 @@ export async function POST(request: NextRequest) {
     // Provide more specific error messages
     let errorMessage = 'Failed to send message. Please try again later.'
     
-    if (error.code === 'EAUTH') {
-      errorMessage = 'Email authentication failed. Please contact support.'
-    } else if (error.code === 'ECONNECTION') {
-      errorMessage = 'Email service connection failed. Please try again later.'
+    if (error && typeof error === 'object' && 'code' in error) {
+      if (error.code === 'EAUTH') {
+        errorMessage = 'Email authentication failed. Please contact support.'
+      } else if (error.code === 'ECONNECTION') {
+        errorMessage = 'Email service connection failed. Please try again later.'
+      }
     }
     
     return NextResponse.json(

@@ -7,111 +7,103 @@ import { Shuffle, Volume2, ArrowRight, Sparkles } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import Link from "next/link"
+import Image from "next/image"
 import ScrollReveal from "../components/scroll-reveal"
 import { useIsMobile } from "@/hooks/use-mobile"
 
-const sampleCards = [
+const cardImages = [
   {
     id: 1,
-    title: "Surya Namaskar",
-    sanskrit: "सूर्य नमस्कार",
-    mantra: "ॐ सूर्याय नमः",
-    description:
-      "Begin with palms together at heart center. Inhale, sweep arms overhead. Exhale, fold forward with devotion.",
-    breathingCue: "Inhale for 4 counts, hold for 2, exhale for 6",
-    spiritualMeaning: "Honoring the divine light within and without",
+    name: "Ekapada Baithak",
+    front: "/CARDSBACKANDFRONT/EKAPADA_BAITHAK_FRONT.jpeg",
+    back: "/CARDSBACKANDFRONT/EKAPADA_BAITHAK_BACK.jpeg"
   },
   {
     id: 2,
-    title: "Dand",
-    sanskrit: "दण्ड",
-    mantra: "ॐ हनुमते नमः",
-    description: "Lower into push-up position. As you descend, imagine Hanuman's strength flowing through you.",
-    breathingCue: "Inhale down for 3 counts, exhale up for 3 counts",
-    spiritualMeaning: "Building strength through humble service",
+    name: "Hanuman Dand",
+    front: "/CARDSBACKANDFRONT/HANUMANDANDFRONT.jpeg",
+    back: "/CARDSBACKANDFRONT/HANUMANDANDBACK.jpeg"
   },
   {
     id: 3,
-    title: "Baithak",
-    sanskrit: "बैठक",
-    mantra: "ॐ गणेशाय नमः",
-    description: "Squat deeply, hands in prayer. Feel your connection to Mother Earth as Ganesha removes obstacles.",
-    breathingCue: "Inhale down for 4 counts, pause, exhale up for 4 counts",
-    spiritualMeaning: "Grounding power, removing obstacles from your path",
+    name: "Rammurti Baithak",
+    front: "/CARDSBACKANDFRONT/RAMMURTI BAITHAK FRONT.jpeg",
+    back: "/CARDSBACKANDFRONT/RAMMURTI BAITHAK BACK.jpeg"
   },
   {
     id: 4,
-    title: "Pranayama",
-    sanskrit: "प्राणायाम",
-    mantra: "ॐ प्राणाय नमः",
-    description: "Sit tall, breathe deeply. Feel the life force (prana) flowing through every cell of your being.",
-    breathingCue: "Inhale for 4, hold for 4, exhale for 8, pause for 2",
-    spiritualMeaning: "Mastering the vital life force within",
+    name: "Sampurna Baithak",
+    front: "/CARDSBACKANDFRONT/SAMPURNABAITHAKFRONT.jpeg",
+    back: "/CARDSBACKANDFRONT/SAMPURNABAITHAKBACK.jpeg"
   },
   {
     id: 5,
-    title: "Dhyana Mudra",
-    sanskrit: "ध्यान मुद्रा",
-    mantra: "ॐ शिवाय नमः",
-    description: "Hands in meditation mudra, spine erect. Find the stillness that exists within all movement.",
-    breathingCue: "Natural breath, focus on the pause between breaths",
-    spiritualMeaning: "Connecting with the cosmic consciousness of Shiva",
+    name: "Sinha Dand",
+    front: "/CARDSBACKANDFRONT/SINHADANDFRONT.jpeg",
+    back: "/CARDSBACKANDFRONT/SINHA DAND BACK.jpeg"
   },
   {
     id: 6,
-    title: "Warrior Stance",
-    sanskrit: "वीर आसन",
-    mantra: "ॐ दुर्गायै नमः",
-    description: "Stand strong like a divine warrior. Feel the power of Durga flowing through your stance.",
-    breathingCue: "Deep, powerful breaths - inhale strength, exhale fear",
-    spiritualMeaning: "Embodying divine courage and protection",
+    name: "Vanar Sapate",
+    front: "/CARDSBACKANDFRONT/VANARSAPATEFRONT.jpeg",
+    back: "/CARDSBACKANDFRONT/VANARSAPATEBACK.jpeg"
   },
   {
     id: 7,
-    title: "Lotus Meditation",
-    sanskrit: "पद्म ध्यान",
-    mantra: "ॐ लक्ष्म्यै नमः",
-    description:
-      "Sit in lotus or comfortable position. Like a lotus rising from mud, find beauty in all circumstances.",
-    breathingCue: "Gentle, flowing breath like water around a lotus",
-    spiritualMeaning: "Rising above circumstances with grace and beauty",
-  },
+    name: "Vrschik Dand",
+    front: "/CARDSBACKANDFRONT/VRSCHKDANDFRONT.jpeg",
+    back: "/CARDSBACKANDFRONT/VRSCHKDANDBACK.jpeg"
+  }
 ]
 
 export default function ExperiencePage() {
-  const [selectedCards, setSelectedCards] = useState<typeof sampleCards>([])
+  const [selectedCards, setSelectedCards] = useState<typeof cardImages>([])
   const [currentCardIndex, setCurrentCardIndex] = useState(0)
-  const [isFlipped, setIsFlipped] = useState(false)
+  const [flippedCards, setFlippedCards] = useState<boolean[]>([])
   const [isDrawing, setIsDrawing] = useState(false)
+  const [imagesLoaded, setImagesLoaded] = useState(false)
+  const [hasDrawnCards, setHasDrawnCards] = useState(false)
 
   const drawCards = () => {
     setIsDrawing(true)
+    setImagesLoaded(false)
+    
     setTimeout(() => {
-      const shuffled = [...sampleCards].sort(() => Math.random() - 0.5)
+      const shuffled = [...cardImages].sort(() => Math.random() - 0.5)
       setSelectedCards(shuffled.slice(0, 3))
       setCurrentCardIndex(0)
-      setIsFlipped(false)
+      setFlippedCards([false, false, false])
+      setImagesLoaded(true)
       setIsDrawing(false)
+      setHasDrawnCards(true)
     }, 1000)
   }
 
   const nextCard = () => {
     if (currentCardIndex < selectedCards.length - 1) {
       setCurrentCardIndex(currentCardIndex + 1)
-      setIsFlipped(false)
     }
   }
 
   const prevCard = () => {
     if (currentCardIndex > 0) {
       setCurrentCardIndex(currentCardIndex - 1)
-      setIsFlipped(false)
     }
   }
 
+  const handleCardHover = (index: number, isHovering: boolean) => {
+    const newFlippedCards = [...flippedCards]
+    newFlippedCards[index] = isHovering
+    setFlippedCards(newFlippedCards)
+  }
 
+  const handleCardLeave = (index: number) => {
+    // Immediate return to front without transition delay
+    const newFlippedCards = [...flippedCards]
+    newFlippedCards[index] = false
+    setFlippedCards(newFlippedCards)
+  }
 
-  const currentCard = selectedCards[currentCardIndex]
   const isMobile = useIsMobile();
 
   return (
@@ -157,14 +149,23 @@ export default function ExperiencePage() {
           <div className="flex justify-center mb-8">
               <Button
                 onClick={drawCards}
-                disabled={isDrawing}
+                disabled={isDrawing || hasDrawnCards}
                 size="lg"
-                className="bg-sacredBellGold text-templeDeepNavy font-bold hover:bg-divineRoyalGold hover:text-scrollIvory transition-all duration-300 text-xl px-12 py-6 rounded-2xl font-semibold shadow-lg disabled:opacity-50"
+                className={`font-bold transition-all duration-300 text-xl px-12 py-6 rounded-2xl font-semibold shadow-lg ${
+                  hasDrawnCards 
+                    ? 'bg-gray-500 text-gray-300 cursor-not-allowed opacity-50' 
+                    : 'bg-sacredBellGold text-templeDeepNavy hover:bg-divineRoyalGold hover:text-scrollIvory'
+                }`}
               >
                 {isDrawing ? (
                   <>
                     <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-white mr-3"></div>
                     Drawing Cards...
+                  </>
+                ) : hasDrawnCards ? (
+                  <>
+                    <div className="text-2xl mr-3">✅</div>
+                    Cards Already Drawn
                   </>
                 ) : (
                   <>
@@ -177,116 +178,160 @@ export default function ExperiencePage() {
 
           {selectedCards.length > 0 && (
             <ScrollReveal delay={200}>
-              <div className="max-w-4xl mx-auto">
-                {/* Card Navigation */}
-                <div className="flex justify-center items-center mb-8 space-x-4">
-                  <Button
-                    onClick={prevCard}
-                    disabled={currentCardIndex === 0}
-                    variant="outline"
-                    className="border-divineRoyalGold text-divineRoyalGold bg-white hover:bg-divineRoyalGold hover:text-templeDeepNavy disabled:opacity-50 disabled:bg-white disabled:text-divineRoyalGold"
+              <div className="max-w-6xl mx-auto">
+                {/* Desktop: All Three Cards Display */}
+                <div className="hidden md:block">
+                  <div 
+                    className="flex justify-center items-center gap-32 mb-8"
+                    onMouseLeave={() => setFlippedCards([false, false, false])}
                   >
-                    Previous
-                  </Button>
-                  <div className="flex space-x-2">
-                    {selectedCards.map((_, index) => (
-                      <div
-                        key={index}
-                        className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                          index === currentCardIndex ? "bg-divineRoyalGold" : "bg-white/30"
-                        }`}
-                      />
+                    {selectedCards.map((card, index) => (
+                      <div key={card.id} className="flex flex-col items-center">
+                        <div className="relative w-64 h-96 perspective-1000">
+                          {imagesLoaded ? (
+                            <div
+                              className={`w-full h-full relative cursor-pointer card-flip-container ${flippedCards[index] ? 'flipped' : ''}`}
+                              style={{
+                                transform: flippedCards[index] ? 'rotateY(180deg)' : 'rotateY(0deg)',
+                                transition: 'transform 0.4s ease-in-out'
+                              }}
+                              onMouseEnter={() => handleCardHover(index, true)}
+                              onMouseLeave={() => handleCardLeave(index)}
+                            >
+                              {/* Front of card */}
+                              <div className="absolute inset-0 w-full h-full rounded-lg shadow-lg overflow-hidden card-flip-front">
+                                <Image
+                                  src={card.front}
+                                  alt={`${card.name} - Front`}
+                                  fill
+                                  className="object-cover card-image"
+                                  sizes="256px"
+                                  priority
+                                  quality={95}
+                                />
+                              </div>
+
+                              {/* Back of card */}
+                              <div className="absolute inset-0 w-full h-full rounded-lg shadow-lg overflow-hidden card-flip-back">
+                                <Image
+                                  src={card.back}
+                                  alt={`${card.name} - Back`}
+                                  fill
+                                  className="object-cover card-image"
+                                  sizes="256px"
+                                  priority
+                                  quality={95}
+                                />
+                              </div>
+                            </div>
+                          ) : (
+                            <div className="w-full h-full rounded-lg shadow-lg bg-white flex items-center justify-center">
+                              <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-sacredBellGold"></div>
+                            </div>
+                          )}
+                        </div>
+                        <p className="text-scrollIvory text-sm mt-3 text-center font-medium">
+                          {card.name}
+                        </p>
+                      </div>
                     ))}
                   </div>
-                  <Button
-                    onClick={nextCard}
-                    disabled={currentCardIndex === selectedCards.length - 1}
-                    variant="outline"
-                    className="border-divineRoyalGold text-divineRoyalGold bg-white hover:bg-divineRoyalGold hover:text-templeDeepNavy disabled:opacity-50 disabled:bg-white disabled:text-divineRoyalGold"
-                  >
-                    Next
-                  </Button>
-                </div>
-
-                {/* Current Card Display */}
-                {/* Card backgrounds and text colors preserved as originally designed */}
-                <div className="relative h-96 perspective-1000 mb-8">
-                  <div
-                    className="card-flip w-full h-full relative cursor-pointer"
-                    style={{
-                      transformStyle: 'preserve-3d',
-                      transform: isFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)',
-                      transition: 'transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94)'
-                    }}
-                    onClick={isMobile ? () => setIsFlipped(!isFlipped) : undefined}
-                    onMouseEnter={!isMobile ? () => setIsFlipped(true) : undefined}
-                    onMouseLeave={!isMobile ? () => setIsFlipped(false) : undefined}
-                  >
-                    {/* Front of card */}
-                    <Card
-                      className="card-front bg-white/50 backdrop-blur-sm border-gray-300/30 h-full"
-                      style={{
-                        backfaceVisibility: 'hidden',
-                        WebkitBackfaceVisibility: 'hidden',
-                        position: 'absolute',
-                        top: 0,
-                        left: 0,
-                        width: '100%',
-                        height: '100%'
-                      }}
-                    >
-                      <CardContent className="p-8 h-full flex flex-col justify-center items-center text-center">
-                        <div className="text-6xl mb-6">✨</div>
-                        <h3 className="font-bold text-black mb-4">{currentCard?.title}</h3>
-                        <p className="text-2xl text-black font-medium mb-4">{currentCard?.sanskrit}</p>
-                        <p className="text-black text-lg italic mb-6">{currentCard?.mantra}</p>
-                        <p className="text-black text-sm">{isMobile ? 'Tap' : 'Hover'} to reveal the practice</p>
-                      </CardContent>
-                    </Card>
-
-                    {/* Back of card */}
-                    <Card
-                      className="card-back bg-white/50 backdrop-blur-sm border-gray-300/30 text-black h-full"
-                      style={{
-                        backfaceVisibility: 'hidden',
-                        WebkitBackfaceVisibility: 'hidden',
-                        position: 'absolute',
-                        top: 0,
-                        left: 0,
-                        width: '100%',
-                        height: '100%',
-                        transform: 'rotateY(180deg)'
-                      }}
-                    >
-                      <CardContent className="p-8 h-full flex flex-col justify-center">
-                        <h3 className="font-bold text-black mb-4 text-center">{currentCard?.title}</h3>
-
-                        <div className="space-y-6">
-                          <div>
-                            <h4 className="font-semibold text-black mb-2">Practice:</h4>
-                            <p className="text-black leading-relaxed">{currentCard?.description}</p>
-                          </div>
-
-                          <div>
-                            <h4 className="font-semibold text-black mb-2">Breathing:</h4>
-                            <p className="text-black leading-relaxed">{currentCard?.breathingCue}</p>
-                          </div>
-
-                          <div>
-                            <h4 className="font-semibold text-black mb-2">Spiritual Meaning:</h4>
-                            <p className="text-black leading-relaxed italic">{currentCard?.spiritualMeaning}</p>
-                          </div>
-                        </div>
-                      </CardContent>
-                    </Card>
+                  <div className="text-center">
+                    <p className="text-scrollIvory text-sm">Hover any card to flip between front and back</p>
                   </div>
                 </div>
 
-                <div className="text-center">
-                  <p className="text-scrollIvory text-lg mb-4">
-                    Card {currentCardIndex + 1} of {selectedCards.length}
-                  </p>
-                  <p className="text-scrollIvory text-sm">{isMobile ? 'Tap' : 'Hover'} the card to flip between front and back</p>
+                {/* Mobile: Single Card with Navigation */}
+                <div className="md:hidden">
+                  {/* Card Navigation */}
+                  <div className="flex justify-center items-center mb-8 space-x-4">
+                    <Button
+                      onClick={prevCard}
+                      disabled={currentCardIndex === 0}
+                      variant="outline"
+                      className="border-divineRoyalGold text-divineRoyalGold bg-white hover:bg-divineRoyalGold hover:text-templeDeepNavy disabled:opacity-50 disabled:bg-white disabled:text-divineRoyalGold"
+                    >
+                      Previous
+                    </Button>
+                    <div className="flex space-x-2">
+                      {selectedCards.map((_, index) => (
+                        <div
+                          key={index}
+                          className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                            index === currentCardIndex ? "bg-divineRoyalGold" : "bg-white/30"
+                          }`}
+                        />
+                      ))}
+                    </div>
+                    <Button
+                      onClick={nextCard}
+                      disabled={currentCardIndex === selectedCards.length - 1}
+                      variant="outline"
+                      className="border-divineRoyalGold text-divineRoyalGold bg-white hover:bg-divineRoyalGold hover:text-templeDeepNavy disabled:opacity-50 disabled:bg-white disabled:text-divineRoyalGold"
+                    >
+                      Next
+                    </Button>
+                  </div>
+
+                  {/* Single Card Display */}
+                  <div className="flex justify-center mb-8">
+                    <div className="relative w-64 h-96 perspective-1000">
+                      {imagesLoaded ? (
+                        <div
+                          className={`w-full h-full relative cursor-pointer card-flip-container ${flippedCards[currentCardIndex] ? 'flipped' : ''}`}
+                          style={{
+                            transform: flippedCards[currentCardIndex] ? 'rotateY(180deg)' : 'rotateY(0deg)',
+                            transition: 'transform 0.4s ease-in-out'
+                          }}
+                          onClick={() => {
+                            const newFlippedCards = [...flippedCards]
+                            newFlippedCards[currentCardIndex] = !newFlippedCards[currentCardIndex]
+                            setFlippedCards(newFlippedCards)
+                          }}
+                        >
+                          {/* Front of card */}
+                          <div className="absolute inset-0 w-full h-full rounded-lg shadow-lg overflow-hidden card-flip-front">
+                            <Image
+                              src={selectedCards[currentCardIndex]?.front || ''}
+                              alt={`${selectedCards[currentCardIndex]?.name} - Front`}
+                              fill
+                              className="object-cover card-image"
+                              sizes="256px"
+                              priority
+                              quality={95}
+                            />
+                          </div>
+
+                          {/* Back of card */}
+                          <div className="absolute inset-0 w-full h-full rounded-lg shadow-lg overflow-hidden card-flip-back">
+                            <Image
+                              src={selectedCards[currentCardIndex]?.back || ''}
+                              alt={`${selectedCards[currentCardIndex]?.name} - Back`}
+                              fill
+                              className="object-cover card-image"
+                              sizes="256px"
+                              priority
+                              quality={95}
+                            />
+                          </div>
+                        </div>
+                      ) : (
+                        <div className="w-full h-full rounded-lg shadow-lg bg-white flex items-center justify-center">
+                          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-sacredBellGold"></div>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+
+                  <div className="text-center">
+                    <p className="text-scrollIvory text-lg mb-2">
+                      {selectedCards[currentCardIndex]?.name}
+                    </p>
+                    <p className="text-scrollIvory text-sm mb-4">
+                      Card {currentCardIndex + 1} of {selectedCards.length}
+                    </p>
+                    <p className="text-scrollIvory text-sm">Tap the card to flip between front and back</p>
+                  </div>
                 </div>
               </div>
             </ScrollReveal>

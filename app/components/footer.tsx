@@ -65,7 +65,18 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-gray-300 mt-8 pt-8 text-center text-black">
-          <p>&copy; 2024 CONSCIOUS KILO. All rights reserved.</p>
+          <p>&copy; 2025 CONSCIOUS KILO. All rights reserved.</p>
+          <p className="mt-2 text-sm">
+            Powered by{" "}
+            <Link 
+              href="https://mode-ai.co" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-blue-600 hover:text-blue-800 transition-colors font-medium"
+            >
+              ModeAI
+            </Link>
+          </p>
         </div>
       </div>
     </footer>

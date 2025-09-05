@@ -28,6 +28,8 @@ export default function HomePage() {
           loop
           muted
           playsInline
+          preload="auto"
+          webkit-playsinline="true"
           className="absolute inset-0 w-full h-full object-cover z-0"
         >
           <source src="/video.mp4" type="video/mp4" />
