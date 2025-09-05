@@ -2,7 +2,7 @@
 
 import type React from "react"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Shuffle, Volume2, ArrowRight, Sparkles } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
@@ -15,67 +15,85 @@ const cardImages = [
   {
     id: 1,
     name: "Ekapada Baithak",
-    front: "/CARDSBACKANDFRONT/EKAPADA_BAITHAK_FRONT.jpeg",
-    back: "/CARDSBACKANDFRONT/EKAPADA_BAITHAK_BACK.jpeg"
+    front: "/CARDSBACKANDFRONT/EKAPADA_BAITHAK_FRONT.webp",
+    back: "/CARDSBACKANDFRONT/EKAPADA_BAITHAK_BACK.webp"
   },
   {
     id: 2,
     name: "Hanuman Dand",
-    front: "/CARDSBACKANDFRONT/HANUMANDANDFRONT.jpeg",
-    back: "/CARDSBACKANDFRONT/HANUMANDANDBACK.jpeg"
+    front: "/CARDSBACKANDFRONT/HANUMANDANDFRONT.webp",
+    back: "/CARDSBACKANDFRONT/HANUMANDANDBACK.webp"
   },
   {
     id: 3,
     name: "Rammurti Baithak",
-    front: "/CARDSBACKANDFRONT/RAMMURTI BAITHAK FRONT.jpeg",
-    back: "/CARDSBACKANDFRONT/RAMMURTI BAITHAK BACK.jpeg"
+    front: "/CARDSBACKANDFRONT/RAMMURTI BAITHAK FRONT.webp",
+    back: "/CARDSBACKANDFRONT/RAMMURTI BAITHAK BACK.webp"
   },
   {
     id: 4,
     name: "Sampurna Baithak",
-    front: "/CARDSBACKANDFRONT/SAMPURNABAITHAKFRONT.jpeg",
-    back: "/CARDSBACKANDFRONT/SAMPURNABAITHAKBACK.jpeg"
+    front: "/CARDSBACKANDFRONT/SAMPURNABAITHAKFRONT.webp",
+    back: "/CARDSBACKANDFRONT/SAMPURNABAITHAKBACK.webp"
   },
   {
     id: 5,
     name: "Sinha Dand",
-    front: "/CARDSBACKANDFRONT/SINHADANDFRONT.jpeg",
-    back: "/CARDSBACKANDFRONT/SINHA DAND BACK.jpeg"
+    front: "/CARDSBACKANDFRONT/SINHADANDFRONT.webp",
+    back: "/CARDSBACKANDFRONT/SINHA DAND BACK.webp"
   },
   {
     id: 6,
     name: "Vanar Sapate",
-    front: "/CARDSBACKANDFRONT/VANARSAPATEFRONT.jpeg",
-    back: "/CARDSBACKANDFRONT/VANARSAPATEBACK.jpeg"
+    front: "/CARDSBACKANDFRONT/VANARSAPATEFRONT.webp",
+    back: "/CARDSBACKANDFRONT/VANARSAPATEBACK.webp"
   },
   {
     id: 7,
     name: "Vrschik Dand",
-    front: "/CARDSBACKANDFRONT/VRSCHKDANDFRONT.jpeg",
-    back: "/CARDSBACKANDFRONT/VRSCHKDANDBACK.jpeg"
+    front: "/CARDSBACKANDFRONT/VRSCHKDANDFRONT.webp",
+    back: "/CARDSBACKANDFRONT/VRSCHKDANDBACK.webp"
   }
 ]
 
 export default function ExperiencePage() {
   const [selectedCards, setSelectedCards] = useState<typeof cardImages>([])
   const [currentCardIndex, setCurrentCardIndex] = useState(0)
-  const [flippedCards, setFlippedCards] = useState<boolean[]>([])
+  const [flippedCards, setFlippedCards] = useState<boolean[]>([false, false, false])
   const [isDrawing, setIsDrawing] = useState(false)
-  const [imagesLoaded, setImagesLoaded] = useState(false)
   const [hasDrawnCards, setHasDrawnCards] = useState(false)
+  const [cardLoadingStates, setCardLoadingStates] = useState<boolean[]>([])
 
   const drawCards = () => {
     setIsDrawing(true)
-    setImagesLoaded(false)
     
     setTimeout(() => {
       const shuffled = [...cardImages].sort(() => Math.random() - 0.5)
-      setSelectedCards(shuffled.slice(0, 3))
+      const newSelectedCards = shuffled.slice(0, 3)
+      setSelectedCards(newSelectedCards)
       setCurrentCardIndex(0)
       setFlippedCards([false, false, false])
-      setImagesLoaded(true)
+      setCardLoadingStates([true, true, true]) // Initialize all cards as loading
       setIsDrawing(false)
       setHasDrawnCards(true)
+      
+      // Preload images for better performance
+      newSelectedCards.forEach((card, index) => {
+        const frontImg = new window.Image()
+        const backImg = new window.Image()
+        
+        frontImg.onload = () => {
+          backImg.onload = () => {
+            setCardLoadingStates(prev => {
+              const newStates = [...prev]
+              newStates[index] = false
+              return newStates
+            })
+          }
+          backImg.src = card.back
+        }
+        frontImg.src = card.front
+      })
     }, 1000)
   }
 
@@ -105,6 +123,13 @@ export default function ExperiencePage() {
   }
 
   const isMobile = useIsMobile();
+
+  // Ensure flippedCards state is properly initialized when cards are selected
+  useEffect(() => {
+    if (selectedCards.length > 0 && flippedCards.length !== selectedCards.length) {
+      setFlippedCards(new Array(selectedCards.length).fill(false))
+    }
+  }, [selectedCards, flippedCards.length])
 
   return (
     <div className="pt-0 bg-templeDeepNavy">
@@ -188,18 +213,18 @@ export default function ExperiencePage() {
                     {selectedCards.map((card, index) => (
                       <div key={card.id} className="flex flex-col items-center">
                         <div className="relative w-64 h-96 perspective-1000">
-                          {imagesLoaded ? (
-                            <div
-                              className={`w-full h-full relative cursor-pointer card-flip-container ${flippedCards[index] ? 'flipped' : ''}`}
-                              style={{
-                                transform: flippedCards[index] ? 'rotateY(180deg)' : 'rotateY(0deg)',
-                                transition: 'transform 0.4s ease-in-out'
-                              }}
-                              onMouseEnter={() => handleCardHover(index, true)}
-                              onMouseLeave={() => handleCardLeave(index)}
-                            >
-                              {/* Front of card */}
-                              <div className="absolute inset-0 w-full h-full rounded-lg shadow-lg overflow-hidden card-flip-front">
+                          <div
+                            className={`w-full h-full relative cursor-pointer card-flip-container ${flippedCards[index] ? 'flipped' : ''}`}
+                            style={{
+                              transform: flippedCards[index] ? 'rotateY(180deg)' : 'rotateY(0deg)',
+                              transition: 'transform 0.4s ease-in-out'
+                            }}
+                            onMouseEnter={() => handleCardHover(index, true)}
+                            onMouseLeave={() => handleCardLeave(index)}
+                          >
+                            {/* Front of card */}
+                            <div className="absolute inset-0 w-full h-full rounded-lg shadow-lg overflow-hidden card-flip-front">
+                              {!cardLoadingStates[index] ? (
                                 <Image
                                   src={card.front}
                                   alt={`${card.name} - Front`}
@@ -209,10 +234,16 @@ export default function ExperiencePage() {
                                   priority
                                   quality={95}
                                 />
-                              </div>
+                              ) : (
+                                <div className="w-full h-full bg-white flex items-center justify-center">
+                                  <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-sacredBellGold"></div>
+                                </div>
+                              )}
+                            </div>
 
-                              {/* Back of card */}
-                              <div className="absolute inset-0 w-full h-full rounded-lg shadow-lg overflow-hidden card-flip-back">
+                            {/* Back of card */}
+                            <div className="absolute inset-0 w-full h-full rounded-lg shadow-lg overflow-hidden card-flip-back">
+                              {!cardLoadingStates[index] ? (
                                 <Image
                                   src={card.back}
                                   alt={`${card.name} - Back`}
@@ -222,13 +253,13 @@ export default function ExperiencePage() {
                                   priority
                                   quality={95}
                                 />
-                              </div>
+                              ) : (
+                                <div className="w-full h-full bg-white flex items-center justify-center">
+                                  <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-sacredBellGold"></div>
+                                </div>
+                              )}
                             </div>
-                          ) : (
-                            <div className="w-full h-full rounded-lg shadow-lg bg-white flex items-center justify-center">
-                              <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-sacredBellGold"></div>
-                            </div>
-                          )}
+                          </div>
                         </div>
                         <p className="text-scrollIvory text-sm mt-3 text-center font-medium">
                           {card.name}
@@ -276,21 +307,21 @@ export default function ExperiencePage() {
                   {/* Single Card Display */}
                   <div className="flex justify-center mb-8">
                     <div className="relative w-64 h-96 perspective-1000">
-                      {imagesLoaded ? (
-                        <div
-                          className={`w-full h-full relative cursor-pointer card-flip-container ${flippedCards[currentCardIndex] ? 'flipped' : ''}`}
-                          style={{
-                            transform: flippedCards[currentCardIndex] ? 'rotateY(180deg)' : 'rotateY(0deg)',
-                            transition: 'transform 0.4s ease-in-out'
-                          }}
-                          onClick={() => {
-                            const newFlippedCards = [...flippedCards]
-                            newFlippedCards[currentCardIndex] = !newFlippedCards[currentCardIndex]
-                            setFlippedCards(newFlippedCards)
-                          }}
-                        >
-                          {/* Front of card */}
-                          <div className="absolute inset-0 w-full h-full rounded-lg shadow-lg overflow-hidden card-flip-front">
+                      <div
+                        className={`w-full h-full relative cursor-pointer card-flip-container ${flippedCards[currentCardIndex] ? 'flipped' : ''}`}
+                        style={{
+                          transform: flippedCards[currentCardIndex] ? 'rotateY(180deg)' : 'rotateY(0deg)',
+                          transition: 'transform 0.4s ease-in-out'
+                        }}
+                        onClick={() => {
+                          const newFlippedCards = [...flippedCards]
+                          newFlippedCards[currentCardIndex] = !newFlippedCards[currentCardIndex]
+                          setFlippedCards(newFlippedCards)
+                        }}
+                      >
+                        {/* Front of card */}
+                        <div className="absolute inset-0 w-full h-full rounded-lg shadow-lg overflow-hidden card-flip-front">
+                          {!cardLoadingStates[currentCardIndex] ? (
                             <Image
                               src={selectedCards[currentCardIndex]?.front || ''}
                               alt={`${selectedCards[currentCardIndex]?.name} - Front`}
@@ -300,10 +331,16 @@ export default function ExperiencePage() {
                               priority
                               quality={95}
                             />
-                          </div>
+                          ) : (
+                            <div className="w-full h-full bg-white flex items-center justify-center">
+                              <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-sacredBellGold"></div>
+                            </div>
+                          )}
+                        </div>
 
-                          {/* Back of card */}
-                          <div className="absolute inset-0 w-full h-full rounded-lg shadow-lg overflow-hidden card-flip-back">
+                        {/* Back of card */}
+                        <div className="absolute inset-0 w-full h-full rounded-lg shadow-lg overflow-hidden card-flip-back">
+                          {!cardLoadingStates[currentCardIndex] ? (
                             <Image
                               src={selectedCards[currentCardIndex]?.back || ''}
                               alt={`${selectedCards[currentCardIndex]?.name} - Back`}
@@ -313,13 +350,13 @@ export default function ExperiencePage() {
                               priority
                               quality={95}
                             />
-                          </div>
+                          ) : (
+                            <div className="w-full h-full bg-white flex items-center justify-center">
+                              <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-sacredBellGold"></div>
+                            </div>
+                          )}
                         </div>
-                      ) : (
-                        <div className="w-full h-full rounded-lg shadow-lg bg-white flex items-center justify-center">
-                          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-sacredBellGold"></div>
-                        </div>
-                      )}
+                      </div>
                     </div>
                   </div>
 

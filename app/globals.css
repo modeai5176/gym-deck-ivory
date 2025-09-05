@@ -489,6 +489,15 @@
     z-index: 1;
   }
 
+  /* Ensure front is visible by default */
+  .card-flip-container:not(.flipped) .card-flip-front {
+    z-index: 2;
+  }
+
+  .card-flip-container:not(.flipped) .card-flip-back {
+    z-index: 1;
+  }
+
   /* When flipped, reverse z-index */
   .card-flip-container.flipped .card-flip-front {
     z-index: 1;
