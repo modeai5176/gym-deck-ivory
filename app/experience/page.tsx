@@ -274,39 +274,30 @@ export default function ExperiencePage() {
 
                 {/* Mobile: Single Card with Navigation */}
                 <div className="md:hidden">
-                  {/* Card Navigation */}
-                  <div className="flex justify-center items-center mb-8 space-x-4">
-                    <Button
-                      onClick={prevCard}
-                      disabled={currentCardIndex === 0}
-                      variant="outline"
-                      className="border-divineRoyalGold text-divineRoyalGold bg-white hover:bg-divineRoyalGold hover:text-templeDeepNavy disabled:opacity-50 disabled:bg-white disabled:text-divineRoyalGold"
-                    >
-                      Previous
-                    </Button>
-                    <div className="flex space-x-2">
-                      {selectedCards.map((_, index) => (
-                        <div
-                          key={index}
-                          className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                            index === currentCardIndex ? "bg-divineRoyalGold" : "bg-white/30"
-                          }`}
-                        />
-                      ))}
-                    </div>
-                    <Button
-                      onClick={nextCard}
-                      disabled={currentCardIndex === selectedCards.length - 1}
-                      variant="outline"
-                      className="border-divineRoyalGold text-divineRoyalGold bg-white hover:bg-divineRoyalGold hover:text-templeDeepNavy disabled:opacity-50 disabled:bg-white disabled:text-divineRoyalGold"
-                    >
-                      Next
-                    </Button>
-                  </div>
-
                   {/* Single Card Display */}
                   <div className="flex justify-center mb-8">
                     <div className="relative w-64 h-96 perspective-1000">
+                      {/* Arrow Navigation Buttons - Top Right Corner */}
+                      <div className="absolute top-2 right-2 z-10 flex flex-col space-y-2">
+                        <Button
+                          onClick={prevCard}
+                          disabled={currentCardIndex === 0}
+                          size="sm"
+                          variant="outline"
+                          className="w-8 h-8 p-0 border-divineRoyalGold text-divineRoyalGold bg-white/90 hover:bg-divineRoyalGold hover:text-templeDeepNavy disabled:opacity-50 disabled:bg-white/50 disabled:text-divineRoyalGold"
+                        >
+                          ←
+                        </Button>
+                        <Button
+                          onClick={nextCard}
+                          disabled={currentCardIndex === selectedCards.length - 1}
+                          size="sm"
+                          variant="outline"
+                          className="w-8 h-8 p-0 border-divineRoyalGold text-divineRoyalGold bg-white/90 hover:bg-divineRoyalGold hover:text-templeDeepNavy disabled:opacity-50 disabled:bg-white/50 disabled:text-divineRoyalGold"
+                        >
+                          →
+                        </Button>
+                      </div>
                       <div
                         className={`w-full h-full relative cursor-pointer card-flip-container ${flippedCards[currentCardIndex] ? 'flipped' : ''}`}
                         style={{
@@ -357,6 +348,20 @@ export default function ExperiencePage() {
                           )}
                         </div>
                       </div>
+                    </div>
+                  </div>
+
+                  {/* Card Indicators - Right Aligned */}
+                  <div className="flex justify-end mb-4">
+                    <div className="flex space-x-2">
+                      {selectedCards.map((_, index) => (
+                        <div
+                          key={index}
+                          className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                            index === currentCardIndex ? "bg-divineRoyalGold" : "bg-white/30"
+                          }`}
+                        />
+                      ))}
                     </div>
                   </div>
 

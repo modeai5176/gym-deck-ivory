@@ -8,7 +8,7 @@ import CardPreview from "./components/card-preview"
 import TimelineSection from "./components/timeline-section"
 import ScrollReveal from "./components/scroll-reveal"
 import FancyVideoPlayer from "./components/fancy-video-player"
-import { useState, useRef } from "react"
+import { useState, useRef, useEffect } from "react"
 import type { UseEmblaCarouselType } from "embla-carousel-react"
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from "@/components/ui/carousel"
 
@@ -16,7 +16,59 @@ import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext
 export default function HomePage() {
   const [showAllBenefits, setShowAllBenefits] = useState(false)
   const [current, setCurrent] = useState(0)
+  const [isVideoPlaying, setIsVideoPlaying] = useState(false)
+  const [showPlayButton, setShowPlayButton] = useState(false)
+  const videoRef = useRef<HTMLVideoElement>(null)
   const emblaApi = useRef<UseEmblaCarouselType[1] | null>(null)
+
+  // Handle video autoplay on mobile
+  useEffect(() => {
+    const video = videoRef.current
+    if (!video) return
+
+    const handleCanPlay = () => {
+      // Try to play the video
+      const playPromise = video.play()
+      if (playPromise !== undefined) {
+        playPromise
+          .then(() => {
+            setIsVideoPlaying(true)
+            setShowPlayButton(false)
+          })
+          .catch(() => {
+            // Autoplay failed, show play button
+            setShowPlayButton(true)
+            setIsVideoPlaying(false)
+          })
+      }
+    }
+
+    const handlePlay = () => {
+      setIsVideoPlaying(true)
+      setShowPlayButton(false)
+    }
+
+    const handlePause = () => {
+      setIsVideoPlaying(false)
+    }
+
+    video.addEventListener('canplay', handleCanPlay)
+    video.addEventListener('play', handlePlay)
+    video.addEventListener('pause', handlePause)
+
+    return () => {
+      video.removeEventListener('canplay', handleCanPlay)
+      video.removeEventListener('play', handlePlay)
+      video.removeEventListener('pause', handlePause)
+    }
+  }, [])
+
+  const handlePlayVideo = () => {
+    const video = videoRef.current
+    if (video) {
+      video.play()
+    }
+  }
 
   return (
     <div className="pt-0 bg-templeDeepNavy">
@@ -24,6 +76,7 @@ export default function HomePage() {
       <section className="min-h-screen flex items-center justify-center text-scrollIvory relative overflow-hidden mt-0">
         {/* Video Background */}
         <video
+          ref={videoRef}
           autoPlay
           loop
           muted
@@ -35,6 +88,19 @@ export default function HomePage() {
           <source src="/video.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
+
+        {/* Play Button Overlay for Mobile */}
+        {showPlayButton && (
+          <div className="absolute inset-0 flex items-center justify-center z-5">
+            <Button
+              onClick={handlePlayVideo}
+              size="lg"
+              className="bg-sacredBellGold/90 hover:bg-sacredBellGold text-templeDeepNavy font-bold transition-all duration-300 text-2xl px-8 py-6 rounded-full backdrop-blur-sm shadow-lg"
+            >
+              ▶️ Play Video
+            </Button>
+          </div>
+        )}
         
         {/* Dark overlay for better text readability */}
         <div className="absolute inset-0 bg-black/45 z-0"></div>
