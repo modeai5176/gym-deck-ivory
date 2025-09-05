@@ -44,8 +44,16 @@ export default function CookieConsent() {
       
       {/* Cookie Consent Popup */}
       <div className="fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-gray-200 shadow-2xl">
-        <div className="max-w-7xl mx-auto px-4 py-4">
-          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+        <div className="max-w-7xl mx-auto px-4 py-4 relative">
+          {/* Close Button - Top Right */}
+          <button
+            onClick={handleClose}
+            className="absolute top-2 right-2 p-2 text-gray-400 hover:text-gray-600 transition-colors z-10"
+          >
+            <X size={20} />
+          </button>
+
+          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 pr-8">
             {/* Content */}
             <div className="flex items-start gap-4 flex-1">
               <div className="flex-shrink-0">
@@ -72,7 +80,7 @@ export default function CookieConsent() {
             </div>
 
             {/* Actions */}
-            <div className="flex items-center gap-3 flex-shrink-0">
+            <div className="flex items-center justify-end gap-3 flex-shrink-0 w-full md:w-auto">
               <Button
                 variant="outline"
                 onClick={handleReject}
@@ -88,13 +96,6 @@ export default function CookieConsent() {
                 <CheckCircle className="mr-2" size={16} />
                 Accept All
               </Button>
-              
-              <button
-                onClick={handleClose}
-                className="p-2 text-gray-400 hover:text-gray-600 transition-colors"
-              >
-                <X size={20} />
-              </button>
             </div>
           </div>
         </div>

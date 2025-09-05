@@ -36,39 +36,29 @@ export default function HomePage() {
             setShowPlayButton(false)
           })
           .catch(() => {
-            // Autoplay failed, show play button
-            setShowPlayButton(true)
-            setIsVideoPlaying(false)
+            // Autoplay failed, try again after a short delay
+            setTimeout(() => {
+              video.play().catch(() => {
+                // If still fails, try with user interaction simulation
+                const playEvent = new Event('click')
+                video.dispatchEvent(playEvent)
+                video.play().catch(() => {
+                  // Final fallback - just set as playing to hide any UI
+                  setIsVideoPlaying(true)
+                  setShowPlayButton(false)
+                })
+              })
+            }, 100)
           })
       }
     }
 
-    const handlePlay = () => {
-      setIsVideoPlaying(true)
-      setShowPlayButton(false)
-    }
-
-    const handlePause = () => {
-      setIsVideoPlaying(false)
-    }
-
     video.addEventListener('canplay', handleCanPlay)
-    video.addEventListener('play', handlePlay)
-    video.addEventListener('pause', handlePause)
 
     return () => {
       video.removeEventListener('canplay', handleCanPlay)
-      video.removeEventListener('play', handlePlay)
-      video.removeEventListener('pause', handlePause)
     }
   }, [])
-
-  const handlePlayVideo = () => {
-    const video = videoRef.current
-    if (video) {
-      video.play()
-    }
-  }
 
   return (
     <div className="pt-0 bg-templeDeepNavy">
@@ -89,18 +79,6 @@ export default function HomePage() {
           Your browser does not support the video tag.
         </video>
 
-        {/* Play Button Overlay for Mobile */}
-        {showPlayButton && (
-          <div className="absolute inset-0 flex items-center justify-center z-5">
-            <Button
-              onClick={handlePlayVideo}
-              size="lg"
-              className="bg-sacredBellGold/90 hover:bg-sacredBellGold text-templeDeepNavy font-bold transition-all duration-300 text-2xl px-8 py-6 rounded-full backdrop-blur-sm shadow-lg"
-            >
-              ▶️ Play Video
-            </Button>
-          </div>
-        )}
         
         {/* Dark overlay for better text readability */}
         <div className="absolute inset-0 bg-black/45 z-0"></div>
