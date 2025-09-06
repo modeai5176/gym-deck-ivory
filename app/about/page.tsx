@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { Heart, Mail, MapPin, Award, Users, Globe, Instagram } from "lucide-react"
+import { Heart, Mail, MapPin, Award, Users, Globe, Instagram, Facebook } from "lucide-react"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -252,12 +252,12 @@ export default function AboutPage() {
             </ScrollReveal>
 
             <ScrollReveal delay={200}>
-              <div className="space-y-8">
+              <div className="space-y-2 h-full flex flex-col justify-between">
                 <Card className="bg-white/90 border-divineRoyalGold/20 shadow-lg">
-                  <CardContent className="p-6">
+                  <CardContent className="p-5">
                     <div className="flex items-center mb-4">
                       <div className="w-12 h-12 bg-divineRoyalGold rounded-full flex items-center justify-center mr-4">
-                        <Mail className="text-templeDeepNavy" size={20} />
+                        <Mail className="text-templeDeepNavy" size={18} />
                       </div>
                       <div>
                         <h4 className="text-templeDeepNavy font-semibold">Email Us</h4>
@@ -271,27 +271,10 @@ export default function AboutPage() {
                 </Card>
 
                 <Card className="bg-white/90 border-divineRoyalGold/20 shadow-lg">
-                  <CardContent className="p-6">
+                  <CardContent className="p-5">
                     <div className="flex items-center mb-4">
                       <div className="w-12 h-12 bg-divineRoyalGold rounded-full flex items-center justify-center mr-4">
-                        <MapPin className="text-templeDeepNavy" size={20} />
-                      </div>
-                      <div>
-                        <h4 className="text-templeDeepNavy font-semibold">Based In</h4>
-                        <p className="text-divineRoyalGold">India</p>
-                      </div>
-                    </div>
-                    <p className="text-templeDeepNavy text-sm">
-                      Rooted in Indian tradition, culture, and innovation.
-                    </p>
-                  </CardContent>
-                </Card>
-
-                <Card className="bg-white/90 border-divineRoyalGold/20 shadow-lg">
-                  <CardContent className="p-6">
-                    <div className="flex items-center mb-4">
-                      <div className="w-12 h-12 bg-divineRoyalGold rounded-full flex items-center justify-center mr-4">
-                        <Instagram className="text-templeDeepNavy" size={20} />
+                        <Instagram className="text-templeDeepNavy" size={18} />
                       </div>
                       <div>
                         <h4 className="text-templeDeepNavy font-semibold">Follow Us</h4>
@@ -307,6 +290,30 @@ export default function AboutPage() {
                     </div>
                     <p className="text-templeDeepNavy text-sm">
                       Connect with us on Instagram for daily inspiration, workout tips, and community updates.
+                    </p>
+                  </CardContent>
+                </Card>
+
+                <Card className="bg-white/90 border-divineRoyalGold/20 shadow-lg">
+                  <CardContent className="p-5">
+                    <div className="flex items-center mb-4">
+                      <div className="w-12 h-12 bg-divineRoyalGold rounded-full flex items-center justify-center mr-4">
+                        <Facebook className="text-templeDeepNavy" size={18} />
+                      </div>
+                      <div>
+                        <h4 className="text-templeDeepNavy font-semibold">Join Our Community</h4>
+                        <a 
+                          href="https://www.facebook.com/share/16nXSUeLcY/?mibextid=wwXIfr" 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="text-divineRoyalGold hover:text-templeDeepNavy transition-colors"
+                        >
+                          The Conscious Kilo
+                        </a>
+                      </div>
+                    </div>
+                    <p className="text-templeDeepNavy text-sm">
+                      Join our Facebook community for discussions, workout challenges, and cultural insights.
                     </p>
                   </CardContent>
                 </Card>

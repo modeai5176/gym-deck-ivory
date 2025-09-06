@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { Instagram, Mail } from "lucide-react"
+import { Instagram, Mail, Facebook } from "lucide-react"
 import { Card, CardContent } from "@/components/ui/card"
 import ScrollReveal from "./scroll-reveal"
 import Image from "next/image"
@@ -26,6 +26,9 @@ export default function Footer() {
             <div className="flex space-x-4">
               <Link href="https://www.instagram.com/theconsciouskilo?igsh=MTNqNDgwMHpvN2puMQ%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer" className="text-black hover:text-gray-700 transition-colors">
                 <Instagram size={24} />
+              </Link>
+              <Link href="https://www.facebook.com/share/16nXSUeLcY/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" className="text-black hover:text-gray-700 transition-colors">
+                <Facebook size={24} />
               </Link>
               <Link
                 href="mailto:shop@consciouskilo.com"
