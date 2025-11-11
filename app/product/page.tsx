@@ -60,24 +60,139 @@ export default function ProductPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <div className="pt-16 bg-templeDeepNavy">
+      <div className="pt-0">
         {/* Hero Section */}
-        <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-templeDeepNavy">
-          <div className="absolute inset-0"></div>
-          <div className="relative z-10 text-center max-w-5xl mx-auto px-4">
+        <section className="relative min-h-screen flex items-end justify-start overflow-hidden">
+          {/* Background Image */}
+          <div className="absolute inset-0 z-0">
+            <Image
+              src="/TALIMHERO.JPG"
+              alt="Talim Deck"
+              fill
+              className="object-cover"
+              priority
+            />
+            {/* Overlay for better text readability */}
+            <div className="absolute inset-0 bg-black/70"></div>
+          </div>
+          <div className="relative z-10 text-left max-w-5xl px-4 sm:px-6 lg:px-8 pb-20 md:pb-24">
             <ScrollReveal>
-              <h1 className="font-aviano-copper text-5xl md:text-8xl font-bold mb-6 leading-tight text-sacredBellGold">
-                TALIM DECK
+              <h1 className="font-aviano-copper text-4xl md:text-7xl font-bold mb-6 leading-tight text-sacredBellGold">
+                STRENGTH SAGA
               </h1>
             </ScrollReveal>
             <ScrollReveal delay={200}>
-              <p className="text-xl md:text-3xl mb-8 text-white max-w-4xl mx-auto leading-relaxed">
+              <p className="text-lg md:text-xl mb-8 text-scrollIvory max-w-4xl leading-relaxed">
                 Meet your all-in-one Indian bodyweight workout companion—80 beautifully designed cards that bring centuries-old strength traditions straight into your hands.
               </p>
-              <p className="text-lg md:text-xl mb-8 text-white max-w-4xl mx-auto leading-relaxed">
-                Compact and waterproof, this deck is built to travel with you from the living room to the park, ensuring you can train anywhere, anytime.
-              </p>
             </ScrollReveal>
+          </div>
+        </section>
+        <div className="border-t border-divineRoyalGold" />
+        {/* Your Strength Kit */}
+        <section className="py-12 md:py-20 bg-sacredSoftNavy">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            {/* Centered Heading */}
+            <ScrollReveal>
+              <div className="text-center mb-8 md:mb-12">
+                <h2 className="font-aviano-copper text-3xl sm:text-4xl md:text-5xl font-bold text-sacredBellGold">
+                  Your Strength Kit
+                </h2>
+              </div>
+            </ScrollReveal>
+            
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
+              {/* Content Side */}
+              <div className="order-2 lg:order-1">
+                <div className="space-y-4 md:space-y-6">
+                  <ScrollReveal delay={100}>
+                    <Card className="bg-white/90 backdrop-blur-sm border-divineRoyalGold/20 hover:bg-white transition-all duration-300 hover:shadow-lg">
+                      <CardContent className="p-4 md:p-6">
+                        <div className="flex items-start space-x-3 md:space-x-4">
+                          <div className="w-10 h-10 md:w-12 md:h-12 bg-divineRoyalGold rounded-full flex items-center justify-center flex-shrink-0">
+                            <span className="text-black text-lg md:text-xl">🪵</span>
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <h3 className="font-bold text-black text-lg md:text-xl mb-1 md:mb-2">Wooden Stand</h3>
+                            <p className="text-black/80 leading-relaxed text-sm md:text-base">
+                              A solid wooden stand designed to keep your card upright and always in sight.
+                            </p>
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </ScrollReveal>
+
+                  <ScrollReveal delay={200}>
+                    <Card className="bg-white/90 backdrop-blur-sm border-divineRoyalGold/20 hover:bg-white transition-all duration-300 hover:shadow-lg">
+                      <CardContent className="p-4 md:p-6">
+                        <div className="flex items-start space-x-3 md:space-x-4">
+                          <div className="w-10 h-10 md:w-12 md:h-12 bg-divineRoyalGold rounded-full flex items-center justify-center flex-shrink-0">
+                            <span className="text-black text-lg md:text-xl">✏️</span>
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <h3 className="font-bold text-black text-lg md:text-xl mb-1 md:mb-2">Permanent Marker</h3>
+                            <p className="text-black/80 leading-relaxed text-sm md:text-base">
+                              A handy marker for creating customized workout plans and tracking your progress.
+                            </p>
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </ScrollReveal>
+
+                  <ScrollReveal delay={300}>
+                    <Card className="bg-white/90 backdrop-blur-sm border-divineRoyalGold/20 hover:bg-white transition-all duration-300 hover:shadow-lg">
+                      <CardContent className="p-4 md:p-6">
+                        <div className="flex items-start space-x-3 md:space-x-4">
+                          <div className="w-10 h-10 md:w-12 md:h-12 bg-divineRoyalGold rounded-full flex items-center justify-center flex-shrink-0">
+                            <span className="text-black text-lg md:text-xl">📖</span>
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <h3 className="font-bold text-black text-lg md:text-xl mb-1 md:mb-2">Welcome Guide</h3>
+                            <p className="text-black/80 leading-relaxed text-sm md:text-base">
+                              A quick guide to help you get started and make the most of your kit.
+                            </p>
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </ScrollReveal>
+
+                  <ScrollReveal delay={400}>
+                    <Card className="bg-white/90 backdrop-blur-sm border-divineRoyalGold/20 hover:bg-white transition-all duration-300 hover:shadow-lg">
+                      <CardContent className="p-4 md:p-6">
+                        <div className="flex items-start space-x-3 md:space-x-4">
+                          <div className="w-10 h-10 md:w-12 md:h-12 bg-divineRoyalGold rounded-full flex items-center justify-center flex-shrink-0">
+                            <span className="text-black text-lg md:text-xl">🃏</span>
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <h3 className="font-bold text-black text-lg md:text-xl mb-1 md:mb-2">Deck</h3>
+                            <p className="text-black/80 leading-relaxed text-sm md:text-base">
+                              A powerful deck inspired by Indian training methods to build true functional strength.
+                            </p>
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </ScrollReveal>
+                </div>
+              </div>
+
+              {/* Image Side */}
+              <div className="relative order-1 lg:order-2">
+                <ScrollReveal delay={200}>
+                  <div className="relative w-full h-full min-h-[300px] sm:min-h-[400px] md:min-h-[500px] rounded-xl md:rounded-2xl overflow-hidden border border-divineRoyalGold/20">
+                    <Image
+                      src="/yourstrengthkit.JPG"
+                      alt="Your Strength Kit"
+                      fill
+                      className="object-cover rounded-xl md:rounded-2xl"
+                    />
+                  </div>
+                </ScrollReveal>
+              </div>
+            </div>
           </div>
         </section>
         <div className="border-t border-divineRoyalGold" />
@@ -353,8 +468,22 @@ export default function ProductPage() {
         </section>
         <div className="border-t border-divineRoyalGold" />
         {/* Begin Your Journey */}
-        <section className="py-20 bg-sacredSoftNavy">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="relative min-h-screen py-20 overflow-hidden flex items-center">
+          {/* Background Image */}
+          <div className="absolute inset-0 z-0">
+            <Image
+              src="/beginyourjourney.JPG"
+              alt="Begin Your Journey"
+              fill
+              className="object-cover"
+              priority
+            />
+            {/* Overlay for better text readability */}
+            <div className="absolute inset-0 bg-black/70"></div>
+          </div>
+          
+          {/* Content */}
+          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
             <ScrollReveal>
               <div className="text-center mb-16">
                 <h2 className="font-aviano-copper text-4xl md:text-5xl font-bold text-sacredBellGold mb-6">

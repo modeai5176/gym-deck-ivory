@@ -134,20 +134,28 @@ export default function ExperiencePage() {
   return (
     <div className="pt-0 bg-templeDeepNavy">
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-templeDeepNavy">
-        <div className="absolute inset-0"></div>
-        <div className="relative z-10 text-center max-w-5xl mx-auto px-4">
+      <section className="relative min-h-screen flex items-end justify-start overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/experiencehero.JPG"
+            alt="Experience the Magic"
+            fill
+            className="object-cover"
+            priority
+          />
+          {/* Overlay for better text readability */}
+          <div className="absolute inset-0 bg-black/70"></div>
+        </div>
+        <div className="relative z-10 text-left max-w-5xl px-4 sm:px-6 lg:px-8 pb-20 md:pb-24">
           <ScrollReveal>
             <h1 className="font-aviano-copper text-4xl md:text-7xl font-bold mb-6 leading-tight text-sacredBellGold">
               Experience the Magic
             </h1>
           </ScrollReveal>
           <ScrollReveal delay={200}>
-            <p className="text-xl md:text-3xl mb-8 text-scrollIvory max-w-4xl mx-auto leading-relaxed">
+            <p className="text-lg md:text-xl mb-8 text-scrollIvory max-w-4xl leading-relaxed">
               Let your workout begin with the flip of a card—simple, tactile, and deeply rooted in legacy. This is more than training; it's a full-body exploration of strength, culture, and intention.
-              </p>
-            <p className="text-lg md:text-xl mb-8 text-scrollIvory max-w-4xl mx-auto leading-relaxed">
-              This is just a glimpse of the 80 cards waiting in your complete Talim Deck.
               </p>
           </ScrollReveal>
         </div>
@@ -206,12 +214,12 @@ export default function ExperiencePage() {
                 {/* Desktop: All Three Cards Display */}
                 <div className="hidden md:block">
                   <div 
-                    className="flex justify-center items-center gap-32 mb-8"
+                    className="flex justify-center items-center gap-28 mb-8"
                     onMouseLeave={() => setFlippedCards([false, false, false])}
                   >
                     {selectedCards.map((card, index) => (
                       <div key={card.id} className="flex flex-col items-center">
-                        <div className="relative w-64 h-96 perspective-1000">
+                        <div className="relative w-[300px] h-[450px] perspective-1000">
                           <div
                             className={`w-full h-full relative cursor-pointer card-flip-container ${flippedCards[index] ? 'flipped' : ''}`}
                             style={{
@@ -229,7 +237,7 @@ export default function ExperiencePage() {
                                   alt={`${card.name} - Front`}
                                   fill
                                   className="object-cover card-image"
-                                  sizes="256px"
+                                  sizes="300px"
                                   priority
                                   quality={95}
                                 />
@@ -248,7 +256,7 @@ export default function ExperiencePage() {
                                   alt={`${card.name} - Back`}
                                   fill
                                   className="object-cover card-image"
-                                  sizes="256px"
+                                  sizes="300px"
                                   priority
                                   quality={95}
                                 />
@@ -305,7 +313,7 @@ export default function ExperiencePage() {
 
                   {/* Single Card Display */}
                   <div className="flex justify-center mb-8">
-                    <div className="relative w-64 h-96 perspective-1000">
+                    <div className="relative w-[300px] h-[450px] perspective-1000">
                       <div
                         className={`w-full h-full relative cursor-pointer card-flip-container ${flippedCards[currentCardIndex] ? 'flipped' : ''}`}
                         style={{
@@ -326,7 +334,7 @@ export default function ExperiencePage() {
                               alt={`${selectedCards[currentCardIndex]?.name} - Front`}
                               fill
                               className="object-cover card-image"
-                              sizes="256px"
+                              sizes="300px"
                               priority
                               quality={95}
                             />
@@ -345,7 +353,7 @@ export default function ExperiencePage() {
                               alt={`${selectedCards[currentCardIndex]?.name} - Back`}
                               fill
                               className="object-cover card-image"
-                              sizes="256px"
+                              sizes="300px"
                               priority
                               quality={95}
                             />

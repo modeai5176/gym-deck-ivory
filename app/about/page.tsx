@@ -69,19 +69,30 @@ export default function AboutPage() {
   return (
     <div className="pt-0 bg-templeDeepNavy">
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-templeDeepNavy">
-        <div className="absolute inset-0"></div>
-        <div className="relative z-10 text-center max-w-5xl mx-auto px-4">
+      <section className="relative min-h-screen flex items-end justify-start overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/AboutUS.jpg"
+            alt="About Us"
+            fill
+            className="object-cover"
+            priority
+          />
+          {/* Overlay for better text readability */}
+          <div className="absolute inset-0 bg-black/70"></div>
+        </div>
+        <div className="relative z-10 text-left max-w-5xl px-4 sm:px-6 lg:px-8 pb-20 md:pb-24">
           <ScrollReveal>
-            <h1 className="font-aviano-copper text-5xl md:text-7xl font-bold mb-6 leading-tight text-sacredBellGold">
+            <h1 className="font-aviano-copper text-4xl md:text-7xl font-bold mb-6 leading-tight text-sacredBellGold">
               About Us
             </h1>
           </ScrollReveal>
           <ScrollReveal delay={200}>
-            <p className="text-xl md:text-3xl mb-8 text-scrollIvory max-w-4xl mx-auto leading-relaxed">
+            <p className="text-lg md:text-xl mb-4 text-scrollIvory max-w-4xl leading-relaxed">
               Our Mission
             </p>
-            <p className="text-lg md:text-xl mb-8 text-scrollIvory max-w-4xl mx-auto leading-relaxed">
+            <p className="text-lg md:text-xl mb-8 text-scrollIvory max-w-4xl leading-relaxed">
               To reconnect modern fitness enthusiasts with India's time-honored bodyweight traditions—crafting experiences that build real-world strength, sharpen the mind, and honor cultural heritage, all through a portable, playful deck of cards.
             </p>
           </ScrollReveal>

@@ -41,7 +41,7 @@ export default function Navigation() {
 
           {/* Navigation Links - Center */}
           <div className="hidden md:flex flex-1 justify-center">
-            <div className="backdrop-blur-md border border-gray-200 rounded-xl px-4 py-2 flex space-x-4 hover:border-black transition-colors duration-300">
+            <div className="backdrop-blur-md border border-black rounded-xl px-4 py-2 flex space-x-4 transition-colors duration-300">
               {[
                 { href: "/", label: "Home" },
                 { href: "/philosophy", label: "Philosophy" },

@@ -93,7 +93,7 @@ export default function CheckoutPage() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          amount: isPromoApplied ? 1300 : 1444, // ₹1300 or ₹1444 in rupees
+          amount: isPromoApplied ? 1500 : 1666, // ₹1500 or ₹1666 in rupees
           currency: 'INR',
           receipt: `talim_deck_${Date.now()}`,
         }),
@@ -197,7 +197,20 @@ export default function CheckoutPage() {
   const canProceed = isFormComplete && isRazorpayLoaded && !isProcessing
 
   return (
-    <div className="min-h-screen flex items-center justify-center pt-32 pb-16 bg-templeDeepNavy">
+    <div className="relative min-h-screen flex items-center justify-center pt-32 pb-16 overflow-hidden">
+      {/* Background Image */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src="/getdeckhero.JPG"
+          alt="Checkout Background"
+          fill
+          className="object-cover"
+          priority
+        />
+        {/* Overlay for better readability */}
+        <div className="absolute inset-0 bg-black/70"></div>
+      </div>
+      <div className="relative z-10 w-full">
       <PaymentNotification
         type={notification.type}
         message={notification.message}
@@ -214,13 +227,13 @@ export default function CheckoutPage() {
             <CardContent className="space-y-4 pt-0 pb-2">
                 {/* Product */}
                 <div className="flex items-center space-x-4">
-                <div className="w-16 h-16 rounded-lg flex items-center justify-center">
+                <div className="w-16 h-16 rounded-lg flex items-center justify-center overflow-hidden">
                     <Image
-                    src="/placeholder.svg"
+                    src="/getdeckhero.JPG"
                     alt="Talim Deck"
                     width={64}
                     height={64}
-                      className="rounded"
+                      className="rounded object-cover"
                     />
                   </div>
                   <div className="flex-1">
@@ -230,17 +243,9 @@ export default function CheckoutPage() {
                   </div>
                 <div className="text-right">
                   <div className="flex flex-col items-end space-y-1">
-                    {/* Original Price with Slash */}
-                    <div className="relative">
-                      <span className="text-sm text-gray-500 line-through">₹1699</span>
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <div className="w-full h-0.5 bg-gray-400 transform -rotate-12 origin-center"></div>
-                      </div>
-                    </div>
-                    {/* Discounted Price */}
+                    {/* Price */}
                     <div className="flex items-center space-x-2">
-                      <span className="text-lg font-bold text-templeDeepNavy">₹1444</span>
-                      <span className="text-xs bg-green-500 text-white px-2 py-1 rounded-full font-bold">15% OFF</span>
+                      <span className="text-lg font-bold text-templeDeepNavy">₹1666</span>
                     </div>
                   </div>
                 </div>
@@ -249,29 +254,28 @@ export default function CheckoutPage() {
               <div className="space-y-1 border-t border-templeDeepNavy/20 pt-3">
                 <div className="flex justify-between text-templeDeepNavy/80">
                     <span>Subtotal</span>
-                  <span>₹1699</span>
-                  </div>
-                <div className="flex justify-between text-templeDeepNavy/80">
-                    <span>New launch Discount (15%)</span>
-                  <span className="text-green-600">-₹255</span>
+                  <span>₹1666</span>
                   </div>
                 {isPromoApplied && (
                   <div className="flex justify-between text-templeDeepNavy/80">
-                    <span>Extra 10% Discount (TALIM10)</span>
-                    <span className="text-green-600">-₹144</span>
+                    <span>10% Discount (TALIM10)</span>
+                    <span className="text-green-600">-₹166</span>
                   </div>
                 )}
                 <div className="flex justify-between text-templeDeepNavy/80">
                     <span>Shipping</span>
-                  <span className="text-templeDeepNavy">Free</span>
+                  <span className="text-templeDeepNavy">Free (India only)</span>
                   </div>
+                <div className="text-xs text-templeDeepNavy/60 italic">
+                  Applicable charges for international shipping
+                </div>
                 <div className="flex justify-between text-templeDeepNavy/80">
                   <span>Tax</span>
                   <span>₹0</span>
                   </div>
                 <div className="flex justify-between text-templeDeepNavy font-bold border-t border-templeDeepNavy/20 pt-2">
                     <span>Total</span>
-                  <span>₹{isPromoApplied ? '1300' : '1444'}</span>
+                  <span>₹{isPromoApplied ? '1500' : '1666'}</span>
                 </div>
                   </div>
 
@@ -320,7 +324,7 @@ export default function CheckoutPage() {
                           </button>
                         </div>
                         <p className="text-xs text-green-700 mt-1">
-                          Extra 10% discount applied - Save ₹144 more!
+                          10% discount applied - Save ₹166!
                         </p>
                       </div>
                     )}
@@ -329,7 +333,10 @@ export default function CheckoutPage() {
               <div className="space-y-1 border-t border-templeDeepNavy/20 pt-3 text-templeDeepNavy text-sm">
                 <div className="flex items-center">
                   <Truck className="mr-2 text-templeDeepNavy" size={16} />
-                  Free shipping across India
+                  Free shipping in India only
+                </div>
+                <div className="text-xs text-templeDeepNavy/70 italic ml-7">
+                  Applicable charges for international shipping
                 </div>
                 <div className="flex items-center">
                   <Shield className="mr-2 text-templeDeepNavy" size={16} />
@@ -529,6 +536,7 @@ export default function CheckoutPage() {
                 )}
               </Button>
             </div>
+      </div>
       </div>
     </div>
   )
