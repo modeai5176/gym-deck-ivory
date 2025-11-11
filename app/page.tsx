@@ -417,7 +417,7 @@ export default function HomePage() {
               }
             ];
             return (
-              <div className="relative">
+              <div className="relative w-full">
                 <Carousel
                   setApi={api => {
                     emblaApi.current = api;
@@ -426,7 +426,7 @@ export default function HomePage() {
                     }
                   }}
                   opts={{ loop: true }}
-                  className="relative"
+                  className="relative w-full"
                 >
                   <CarouselContent>
                     {testimonials.map((t, i) => (
@@ -447,7 +447,7 @@ export default function HomePage() {
                     ))}
                   </CarouselContent>
                   {/* Dots */}
-                  <div className="flex justify-center gap-3 mt-8">
+                  <div className="flex justify-center gap-2 sm:gap-3 mt-6 sm:mt-8">
                     {testimonials.map((_, i) => (
                       <button
                         key={i}
