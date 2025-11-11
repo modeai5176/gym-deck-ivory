@@ -391,8 +391,8 @@ export default function HomePage() {
       <section className="py-10 bg-templeDeepNavy">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
-            <div className="text-center mb-16">
-              <h2 className="font-aviano-copper text-4xl md:text-5xl font-bold text-sacredBellGold mb-6">What Practitioners Say</h2>
+            <div className="text-center mb-8 md:mb-16 px-2">
+              <h2 className="font-aviano-copper text-2xl sm:text-3xl md:text-5xl font-bold text-sacredBellGold mb-4 md:mb-6 break-words">What Practitioners Say</h2>
             </div>
           </ScrollReveal>
 
@@ -432,13 +432,13 @@ export default function HomePage() {
                     {testimonials.map((t, i) => (
                       <CarouselItem key={i}>
                         <Card className="bg-white/90 backdrop-blur-sm border-sacredBellGold/20 hover:bg-white transition-all duration-300">
-                          <CardContent className="p-8 flex flex-col h-full justify-start items-start">
-                            <p className="text-left mb-2 italic">{t.text}</p>
-                            <div className="flex items-center justify-start gap-2">
-                              <div className={`w-7 h-7 ${t.bg} rounded-full flex items-center justify-center`}>{t.icon}</div>
-                              <div>
-                                <p className="font-semibold">{t.name}</p>
-                                <p className="text-sm">{t.title}</p>
+                          <CardContent className="p-4 sm:p-6 md:p-8 flex flex-col h-full justify-start items-start">
+                            <p className="text-left mb-3 md:mb-4 italic text-sm sm:text-base md:text-lg leading-relaxed break-words">{t.text}</p>
+                            <div className="flex items-center justify-start gap-2 sm:gap-3">
+                              <div className={`w-6 h-6 sm:w-7 sm:h-7 ${t.bg} rounded-full flex items-center justify-center flex-shrink-0`}>{t.icon}</div>
+                              <div className="min-w-0">
+                                <p className="font-semibold text-sm sm:text-base break-words">{t.name}</p>
+                                <p className="text-xs sm:text-sm break-words">{t.title}</p>
                               </div>
                             </div>
                           </CardContent>
