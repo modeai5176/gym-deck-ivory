@@ -134,11 +134,11 @@ export default function ExperiencePage() {
   return (
     <div className="pt-0 bg-templeDeepNavy">
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-end justify-start overflow-hidden">
+      <section className="relative min-h-screen flex items-end justify-start overflow-hidden bg-templeDeepNavy">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <Image
-            src="/experiencehero.JPG"
+            src="/experiencehero.png"
             alt="Experience the Magic"
             fill
             className="object-cover"
@@ -146,7 +146,7 @@ export default function ExperiencePage() {
             priority
           />
           {/* Overlay for better text readability */}
-          <div className="absolute inset-0 bg-black/70"></div>
+          <div className="absolute inset-0 bg-black/60"></div>
         </div>
         <div className="relative z-10 text-left max-w-5xl px-4 sm:px-6 lg:px-8 pb-20 md:pb-24">
           <ScrollReveal>

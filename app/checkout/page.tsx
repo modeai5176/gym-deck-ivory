@@ -64,7 +64,7 @@ export default function CheckoutPage() {
       setPromoError('')
       setNotification({
         type: 'success',
-        message: '🎉 Extra 10% discount applied!',
+        message: '🎉 10% discount applied! Final price: ₹1500 (Save ₹166)',
         isVisible: true
       })
       // Hide notification after 3 seconds
@@ -209,7 +209,7 @@ export default function CheckoutPage() {
           priority
         />
         {/* Overlay for better readability */}
-        <div className="absolute inset-0 bg-black/70"></div>
+        <div className="absolute inset-0 bg-black/20"></div>
       </div>
       <div className="relative z-10 w-full">
       <PaymentNotification

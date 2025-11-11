@@ -187,7 +187,7 @@ export default function EmailCapturePopup() {
                   </div>
                   <p className="text-gray-600 text-xs md:text-sm leading-relaxed px-1 md:px-0">
                     Subscribe to Unlock Your exclusive code for the Talim Deck.
-                    Get an extra 10% off the new launch price.
+                    Get an extra 10% off the regular price.
                   </p>
                 </div>
 
@@ -262,9 +262,9 @@ export default function EmailCapturePopup() {
                     </button>
                   </div>
                   <div className="text-sm text-templeDeepNavy/70 space-y-1">
-                    <p>New Launch Price: <span className="line-through">₹1699</span> → <span className="font-bold text-green-600">₹1444</span></p>
-                    <p>Extra 10% OFF: <span className="font-bold text-green-600">-₹144</span></p>
-                    <p className="font-bold text-sacredBellGold text-lg">Final Price: ₹1300</p>
+                    <p>Price: <span className="font-bold text-templeDeepNavy">₹1666</span></p>
+                    <p>Extra 10% OFF: <span className="font-bold text-green-600">-₹166</span></p>
+                    <p className="font-bold text-sacredBellGold text-lg">Final Price: ₹1500</p>
                   </div>
                 </div>
                 

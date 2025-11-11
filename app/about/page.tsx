@@ -81,7 +81,7 @@ export default function AboutPage() {
             priority
           />
           {/* Overlay for better text readability */}
-          <div className="absolute inset-0 bg-black/70"></div>
+          <div className="absolute inset-0 bg-black/50"></div>
         </div>
         <div className="relative z-10 text-left max-w-5xl px-4 sm:px-6 lg:px-8 pb-20 md:pb-24">
           <ScrollReveal>
