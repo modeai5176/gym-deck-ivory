@@ -508,12 +508,14 @@ export default function ProductPage() {
                       <li className="flex items-center"><span className="text-divineRoyalGold mr-2">✓</span>25 Baithak</li>
                       <li className="flex items-center"><span className="text-divineRoyalGold mr-2">✓</span>9 Sapate</li>
                       <li className="flex items-center"><span className="text-divineRoyalGold mr-2">✓</span>12 Pre-Designed Routines</li>
+                      <li className="flex items-center"><span className="text-divineRoyalGold mr-2">✓</span>Permanent Marker</li>
                     </ul>
                     <ul className="text-scrollIvory text-lg font-semibold space-y-2 pl-0">
                       <li className="flex items-center"><span className="text-divineRoyalGold mr-2">✓</span>4 Progress Trackers</li>
                       <li className="flex items-center"><span className="text-divineRoyalGold mr-2">✓</span>4 Customizable Templates</li>
                       <li className="flex items-center"><span className="text-divineRoyalGold mr-2">✓</span>1 Muscle Anatomy Card</li>
                       <li className="flex items-center"><span className="text-divineRoyalGold mr-2">✓</span>1 Breathing Techniques Card</li>
+                      <li className="flex items-center"><span className="text-divineRoyalGold mr-2">✓</span>Wooden Stand and Welcome Guide</li>
                     </ul>
                   </div>
                 </div>
