@@ -79,7 +79,7 @@ export default function ProductPage() {
           <div className="relative z-10 text-left max-w-5xl px-4 sm:px-6 lg:px-8 pb-20 md:pb-24">
             <ScrollReveal>
               <h1 className="font-aviano-copper text-4xl md:text-7xl font-bold mb-6 leading-tight text-sacredBellGold">
-                STRENGTH SAGA
+                THE STRENGTH SAGA
               </h1>
             </ScrollReveal>
             <ScrollReveal delay={200}>
