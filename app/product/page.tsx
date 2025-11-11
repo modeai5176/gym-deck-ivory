@@ -70,6 +70,7 @@ export default function ProductPage() {
               alt="Talim Deck"
               fill
               className="object-cover"
+              sizes="100vw"
               priority
             />
             {/* Overlay for better text readability */}
@@ -188,6 +189,8 @@ export default function ProductPage() {
                       alt="Your Strength Kit"
                       fill
                       className="object-cover rounded-xl md:rounded-2xl"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
+                      loading="lazy"
                     />
                   </div>
                 </ScrollReveal>
@@ -476,7 +479,8 @@ export default function ProductPage() {
               alt="Begin Your Journey"
               fill
               className="object-cover"
-              priority
+              sizes="100vw"
+              loading="lazy"
             />
             {/* Overlay for better text readability */}
             <div className="absolute inset-0 bg-black/70"></div>

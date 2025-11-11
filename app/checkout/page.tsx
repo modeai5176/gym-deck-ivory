@@ -205,6 +205,7 @@ export default function CheckoutPage() {
           alt="Checkout Background"
           fill
           className="object-cover"
+          sizes="100vw"
           priority
         />
         {/* Overlay for better readability */}
@@ -234,6 +235,8 @@ export default function CheckoutPage() {
                     width={64}
                     height={64}
                       className="rounded object-cover"
+                      sizes="64px"
+                      loading="lazy"
                     />
                   </div>
                   <div className="flex-1">

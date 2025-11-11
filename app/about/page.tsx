@@ -77,6 +77,7 @@ export default function AboutPage() {
             alt="About Us"
             fill
             className="object-cover"
+            sizes="100vw"
             priority
           />
           {/* Overlay for better text readability */}

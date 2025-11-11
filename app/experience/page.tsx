@@ -142,6 +142,7 @@ export default function ExperiencePage() {
             alt="Experience the Magic"
             fill
             className="object-cover"
+            sizes="100vw"
             priority
           />
           {/* Overlay for better text readability */}
@@ -237,9 +238,9 @@ export default function ExperiencePage() {
                                   alt={`${card.name} - Front`}
                                   fill
                                   className="object-cover card-image"
-                                  sizes="300px"
-                                  priority
-                                  quality={95}
+                                  sizes="(max-width: 768px) 300px, 300px"
+                                  loading="lazy"
+                                  quality={90}
                                 />
                               ) : (
                                 <div className="w-full h-full bg-white flex items-center justify-center">
@@ -256,9 +257,9 @@ export default function ExperiencePage() {
                                   alt={`${card.name} - Back`}
                                   fill
                                   className="object-cover card-image"
-                                  sizes="300px"
-                                  priority
-                                  quality={95}
+                                  sizes="(max-width: 768px) 300px, 300px"
+                                  loading="lazy"
+                                  quality={90}
                                 />
                               ) : (
                                 <div className="w-full h-full bg-white flex items-center justify-center">
@@ -334,9 +335,9 @@ export default function ExperiencePage() {
                               alt={`${selectedCards[currentCardIndex]?.name} - Front`}
                               fill
                               className="object-cover card-image"
-                              sizes="300px"
-                              priority
-                              quality={95}
+                              sizes="(max-width: 768px) 300px, 300px"
+                              loading="lazy"
+                              quality={90}
                             />
                           ) : (
                             <div className="w-full h-full bg-white flex items-center justify-center">
@@ -353,9 +354,9 @@ export default function ExperiencePage() {
                               alt={`${selectedCards[currentCardIndex]?.name} - Back`}
                               fill
                               className="object-cover card-image"
-                              sizes="300px"
-                              priority
-                              quality={95}
+                              sizes="(max-width: 768px) 300px, 300px"
+                              loading="lazy"
+                              quality={90}
                             />
                           ) : (
                             <div className="w-full h-full bg-white flex items-center justify-center">
